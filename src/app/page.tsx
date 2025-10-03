@@ -98,7 +98,12 @@ export default function HomePage() {
                   <Link href="/menu">View Menu</Link>
                 </Button>
                 <Button asChild size="lg" variant="outline" className="flex-1 sm:flex-initial w-full sm:w-auto text-lg border-orange-600 text-orange-600 hover:bg-orange-50">
-                  <Link href="/order">Order Now</Link>
+                  <Link href="/order">
+                    <div className="flex flex-col items-center">
+                      <span>Same-Day Order</span>
+                      <span className="text-xs font-normal">Pickup & Delivery</span>
+                    </div>
+                  </Link>
                 </Button>
               </div>
 
