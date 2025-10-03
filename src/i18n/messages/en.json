@@ -1,0 +1,123 @@
+{
+  "common": {
+    "welcome": "Welcome",
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "cancel": "Cancel",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "submit": "Submit",
+    "close": "Close",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "search": "Search"
+  },
+  "nav": {
+    "home": "Home",
+    "dashboard": "Dashboard",
+    "subscription": "Subscription",
+    "payments": "Payments",
+    "deliveries": "Deliveries",
+    "settings": "Settings",
+    "logout": "Logout",
+    "login": "Login",
+    "register": "Register"
+  },
+  "auth": {
+    "login": {
+      "title": "Welcome Back",
+      "subtitle": "Login to your account",
+      "email": "Email",
+      "password": "Password",
+      "forgotPassword": "Forgot password?",
+      "noAccount": "Don't have an account?",
+      "signUp": "Sign up"
+    },
+    "register": {
+      "title": "Create Account",
+      "subtitle": "Start your subscription today",
+      "name": "Full Name",
+      "email": "Email",
+      "phone": "Phone Number",
+      "password": "Password",
+      "confirmPassword": "Confirm Password",
+      "hasAccount": "Already have an account?",
+      "signIn": "Sign in"
+    }
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "welcome": "Welcome back, {name}",
+    "subscription": {
+      "title": "Your Subscription",
+      "status": "Status",
+      "plan": "Plan",
+      "nextBilling": "Next Billing",
+      "amount": "Amount"
+    },
+    "quickActions": {
+      "title": "Quick Actions",
+      "viewMenu": "View Menu",
+      "managePlan": "Manage Plan",
+      "updateAddress": "Update Address"
+    }
+  },
+  "subscription": {
+    "title": "Subscription Plans",
+    "basic": {
+      "name": "Basic",
+      "description": "Perfect for individuals",
+      "features": {
+        "meals": "1 meal per day",
+        "delivery": "5 days a week",
+        "support": "Email support"
+      }
+    },
+    "premium": {
+      "name": "Premium",
+      "description": "Best for families",
+      "features": {
+        "meals": "2 meals per day",
+        "delivery": "7 days a week",
+        "support": "Priority support",
+        "custom": "Custom menu options"
+      }
+    },
+    "actions": {
+      "subscribe": "Subscribe Now",
+      "pause": "Pause Subscription",
+      "resume": "Resume Subscription",
+      "cancel": "Cancel Subscription",
+      "update": "Update Plan"
+    }
+  },
+  "payments": {
+    "title": "Payment History",
+    "amount": "Amount",
+    "date": "Date",
+    "status": "Status",
+    "transactionId": "Transaction ID",
+    "invoice": "Download Invoice",
+    "statuses": {
+      "completed": "Completed",
+      "pending": "Pending",
+      "failed": "Failed"
+    }
+  },
+  "errors": {
+    "generic": "Something went wrong. Please try again.",
+    "network": "Network error. Please check your connection.",
+    "unauthorized": "You need to be logged in to access this page.",
+    "notFound": "Page not found",
+    "validation": {
+      "required": "This field is required",
+      "email": "Please enter a valid email",
+      "phone": "Please enter a valid phone number",
+      "passwordMin": "Password must be at least 8 characters",
+      "passwordMatch": "Passwords do not match"
+    }
+  }
+}

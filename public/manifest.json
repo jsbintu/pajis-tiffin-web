@@ -1,0 +1,47 @@
+{
+  "name": "Pajis Kitchen - Home-Style Indian Meals",
+  "short_name": "Pajis Kitchen",
+  "description": "Authentic home-style Indian meal delivery subscription service",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#16a34a",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["food", "lifestyle"],
+  "shortcuts": [
+    {
+      "name": "My Dashboard",
+      "short_name": "Dashboard",
+      "description": "View your subscription dashboard",
+      "url": "/dashboard",
+      "icons": [{ "src": "/icon-192x192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Subscribe Now",
+      "short_name": "Subscribe",
+      "description": "Start a new subscription",
+      "url": "/subscribe",
+      "icons": [{ "src": "/icon-192x192.png", "sizes": "192x192" }]
+    }
+  ]
+}
