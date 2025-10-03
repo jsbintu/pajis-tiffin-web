@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
-import { Check, ChevronRight, Info, Star, Calendar, Users, Utensils, ChefHat } from "lucide-react"
+import { Check, ChevronRight, Info, Star, Calendar, Users, Utensils, ChefHat, Plus, Minus, Clock } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -20,9 +20,10 @@ export default function SubscribeNewPage() {
   const { data: plans, isLoading: isLoadingPlans } = useSubscriptionPlans()
   const { data: addOns, isLoading: isLoadingAddOns } = useAddOns()
   
-  const [selectedPlan, setSelectedPlan] = useState<string>("")
+  const [selectedPlan, setSelectedPlan] = useState<string>("") 
   const [billingCycle, setBillingCycle] = useState<"weekly" | "monthly">("monthly")
   const [selectedAddOns, setSelectedAddOns] = useState<Record<string, number>>({})
+  const [menuItems, setMenuItems] = useState<Record<string, { quantity: number; frequency: 'daily' | 'specific' }>>({})
 
   // Auto-select first plan
   useEffect(() => {
@@ -33,15 +34,37 @@ export default function SubscribeNewPage() {
 
   const selectedPlanData = plans?.find(p => p.id === selectedPlan)
   
+  // Mock menu items
+  const mockMenuItems = [
+    { id: 'butter-chicken', name: 'Butter Chicken', price: 280, emoji: '🍛', category: 'Main Course' },
+    { id: 'dal-makhani', name: 'Dal Makhani', price: 180, emoji: '🍲', category: 'Main Course' },
+    { id: 'paneer-tikka', name: 'Paneer Tikka', price: 220, emoji: '🧆', category: 'Appetizer' },
+    { id: 'biryani', name: 'Chicken Biryani', price: 250, emoji: '🍚', category: 'Main Course' },
+    { id: 'butter-naan', name: 'Butter Naan', price: 40, emoji: '🥖', category: 'Bread' },
+    { id: 'garlic-naan', name: 'Garlic Naan', price: 50, emoji: '🧄', category: 'Bread' },
+    { id: 'gulab-jamun', name: 'Gulab Jamun', price: 120, emoji: '🍡', category: 'Dessert' },
+    { id: 'masala-chai', name: 'Masala Chai', price: 30, emoji: '☕', category: 'Beverage' },
+  ]
+  
   const calculateTotal = () => {
     let total = 0
     if (selectedPlanData) {
       total += parseFloat(billingCycle === "weekly" ? selectedPlanData.weeklyPrice : selectedPlanData.monthlyPrice)
     }
+    // Add-ons
     Object.entries(selectedAddOns).forEach(([addOnId, quantity]) => {
       const addOn = addOns?.find(a => a.id === addOnId)
       if (addOn && quantity > 0) {
         total += parseFloat(billingCycle === "weekly" ? addOn.weeklyPrice : addOn.monthlyPrice) * quantity
+      }
+    })
+    // Menu items
+    Object.entries(menuItems).forEach(([itemId, { quantity, frequency }]) => {
+      const item = mockMenuItems.find(i => i.id === itemId)
+      if (item && quantity > 0) {
+        const multiplier = frequency === 'daily' ? (billingCycle === 'weekly' ? 7 : 30) : 1
+        const itemTotal = item.price * quantity * multiplier
+        total += billingCycle === 'weekly' ? itemTotal / 4.33 : itemTotal // Convert to weekly/monthly
       }
     })
     return total.toFixed(2)
@@ -58,10 +81,22 @@ export default function SubscribeNewPage() {
       return { ...prev, [addOnId]: newValue }
     })
   }
+  
+  const handleMenuItemChange = (itemId: string, delta: number, frequency: 'daily' | 'specific' = 'daily') => {
+    setMenuItems(prev => {
+      const current = prev[itemId]?.quantity || 0
+      const newValue = Math.max(0, Math.min(10, current + delta))
+      if (newValue === 0) {
+        const { [itemId]: _, ...rest } = prev
+        return rest
+      }
+      return { ...prev, [itemId]: { quantity: newValue, frequency } }
+    })
+  }
 
   const handleContinue = () => {
-    // For now, just navigate to subscribe page with selected options
-    router.push(`/subscribe?plan=${selectedPlan}&cycle=${billingCycle}`)
+    // Navigate to manage subscription or checkout
+    router.push('/manage-subscription?new=true')
   }
 
   if (isLoadingPlans || isLoadingAddOns) {
@@ -144,11 +179,11 @@ export default function SubscribeNewPage() {
               <Card
                 key={plan.id}
                 className={cn(
-                  "relative cursor-pointer transition-all duration-300 hover:shadow-2xl hover:-translate-y-2",
+                  "relative cursor-pointer transition-all duration-300 hover:shadow-xl hover:-translate-y-1 group",
                   isSelected
-                    ? "border-2 border-primary ring-4 ring-primary/20 shadow-xl"
-                    : "border-2 hover:border-primary/50",
-                  isPremium && "border-primary"
+                    ? "border-2 border-primary ring-2 ring-primary/30 shadow-lg scale-[1.02]"
+                    : "border hover:border-primary/50 hover:shadow-md",
+                  isPremium && "border-primary/50"
                 )}
                 onClick={() => setSelectedPlan(plan.id)}
               >
@@ -161,11 +196,16 @@ export default function SubscribeNewPage() {
                 )}
                 
                 <CardHeader className="text-center pb-4">
-                  <div className="mx-auto mb-4 h-16 w-16 rounded-full bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center">
-                    <Utensils className="h-8 w-8 text-white" />
+                  <div className={cn(
+                    "mx-auto mb-4 h-14 w-14 rounded-full flex items-center justify-center transition-colors duration-300",
+                    isSelected 
+                      ? "bg-gradient-to-br from-green-500 to-green-600 shadow-lg" 
+                      : "bg-gradient-to-br from-green-400 to-green-500 group-hover:from-green-500 group-hover:to-green-600"
+                  )}>
+                    <Utensils className="h-7 w-7 text-white" />
                   </div>
-                  <CardTitle className="text-2xl">{plan.name}</CardTitle>
-                  <CardDescription className="text-base">{plan.description}</CardDescription>
+                  <CardTitle className="text-xl font-bold">{plan.name}</CardTitle>
+                  <CardDescription className="text-sm text-muted-foreground">{plan.description}</CardDescription>
                 </CardHeader>
 
                 <CardContent className="space-y-6">
@@ -215,55 +255,143 @@ export default function SubscribeNewPage() {
           })}
         </div>
 
-        {/* Add-ons Section */}
-        {addOns && addOns.length > 0 && (
-          <Card className="mb-12">
+        <div className="grid gap-8 lg:grid-cols-2 mb-12">
+          {/* Add-ons Section */}
+          {addOns && addOns.length > 0 && (
+            <Card className="h-fit hover:shadow-lg transition-shadow duration-300">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Star className="h-5 w-5 text-yellow-500" />
+                  Popular Add-ons
+                </CardTitle>
+                <CardDescription>
+                  Enhance your meals with delicious extras
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-3">
+                {addOns.map((addOn) => {
+                  const quantity = selectedAddOns[addOn.id] || 0
+                  const price = billingCycle === "weekly" ? addOn.weeklyPrice : addOn.monthlyPrice
+
+                  return (
+                    <div
+                      key={addOn.id}
+                      className="flex items-center justify-between p-3 rounded-lg border hover:border-primary/50 transition-all duration-200 hover:shadow-sm"
+                    >
+                      <div className="flex-1">
+                        <h4 className="font-medium">{addOn.name}</h4>
+                        <p className="text-xs text-muted-foreground">{addOn.description}</p>
+                        <p className="mt-1 text-sm font-semibold text-primary">
+                          {formatCurrency(price)}
+                          <span className="text-xs font-normal text-muted-foreground">
+                            {" "}/ {billingCycle === "weekly" ? "week" : "month"}
+                          </span>
+                        </p>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          className="h-8 w-8 p-0"
+                          onClick={() => handleAddOnChange(addOn.id, -1)}
+                          disabled={quantity === 0}
+                        >
+                          <Minus className="h-3 w-3" />
+                        </Button>
+                        <span className="w-6 text-center text-sm font-semibold">{quantity}</span>
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          className="h-8 w-8 p-0"
+                          onClick={() => handleAddOnChange(addOn.id, 1)}
+                          disabled={quantity >= 10}
+                        >
+                          <Plus className="h-3 w-3" />
+                        </Button>
+                      </div>
+                    </div>
+                  )
+                })}
+              </CardContent>
+            </Card>
+          )}
+          
+          {/* Menu Items Section */}
+          <Card className="h-fit hover:shadow-lg transition-shadow duration-300">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <Star className="h-5 w-5 text-yellow-500" />
-                Customize with Add-ons
+                <Utensils className="h-5 w-5 text-green-500" />
+                Add from Menu
               </CardTitle>
               <CardDescription>
-                Enhance your meals with delicious extras (optional)
+                Add any items from our delicious menu
               </CardDescription>
             </CardHeader>
-            <CardContent className="space-y-4">
-              {addOns.map((addOn) => {
-                const quantity = selectedAddOns[addOn.id] || 0
-                const price = billingCycle === "weekly" ? addOn.weeklyPrice : addOn.monthlyPrice
+            <CardContent className="space-y-3">
+              {mockMenuItems.map((item) => {
+                const menuItem = menuItems[item.id]
+                const quantity = menuItem?.quantity || 0
+                const frequency = menuItem?.frequency || 'daily'
 
                 return (
                   <div
-                    key={addOn.id}
-                    className="flex items-center justify-between p-4 rounded-lg border-2 hover:border-primary/50 transition-colors"
+                    key={item.id}
+                    className="flex items-center justify-between p-3 rounded-lg border hover:border-primary/50 transition-all duration-200 hover:shadow-sm"
                   >
-                    <div className="flex-1">
-                      <h4 className="font-semibold">{addOn.name}</h4>
-                      <p className="text-sm text-muted-foreground">{addOn.description}</p>
-                      <p className="mt-2 font-semibold text-primary">
-                        {formatCurrency(price)}
-                        <span className="text-sm font-normal text-muted-foreground">
-                          {" "}/ {billingCycle === "weekly" ? "week" : "month"}
-                        </span>
-                      </p>
+                    <div className="flex items-center gap-3 flex-1">
+                      <div className="text-2xl">{item.emoji}</div>
+                      <div className="flex-1">
+                        <h4 className="font-medium">{item.name}</h4>
+                        <div className="flex items-center gap-2 mt-1">
+                          <Badge variant="secondary" className="text-xs">
+                            {item.category}
+                          </Badge>
+                          <p className="text-sm font-semibold text-primary">
+                            ₹{item.price}
+                          </p>
+                        </div>
+                        {quantity > 0 && (
+                          <div className="mt-1 flex items-center gap-2">
+                            <Button
+                              variant={frequency === 'daily' ? 'default' : 'outline'}
+                              size="sm"
+                              className="h-6 px-2 text-xs"
+                              onClick={() => handleMenuItemChange(item.id, 0, 'daily')}
+                            >
+                              <Clock className="h-3 w-3 mr-1" />
+                              Daily
+                            </Button>
+                            <Button
+                              variant={frequency === 'specific' ? 'default' : 'outline'}
+                              size="sm"
+                              className="h-6 px-2 text-xs"
+                              onClick={() => handleMenuItemChange(item.id, 0, 'specific')}
+                            >
+                              Specific Days
+                            </Button>
+                          </div>
+                        )}
+                      </div>
                     </div>
-                    <div className="flex items-center gap-3">
+                    <div className="flex items-center gap-2">
                       <Button
                         variant="outline"
-                        size="icon"
-                        onClick={() => handleAddOnChange(addOn.id, -1)}
+                        size="sm"
+                        className="h-8 w-8 p-0"
+                        onClick={() => handleMenuItemChange(item.id, -1, frequency)}
                         disabled={quantity === 0}
                       >
-                        -
+                        <Minus className="h-3 w-3" />
                       </Button>
-                      <span className="w-8 text-center font-semibold">{quantity}</span>
+                      <span className="w-6 text-center text-sm font-semibold">{quantity}</span>
                       <Button
                         variant="outline"
-                        size="icon"
-                        onClick={() => handleAddOnChange(addOn.id, 1)}
+                        size="sm"
+                        className="h-8 w-8 p-0"
+                        onClick={() => handleMenuItemChange(item.id, 1, frequency)}
                         disabled={quantity >= 10}
                       >
-                        +
+                        <Plus className="h-3 w-3" />
                       </Button>
                     </div>
                   </div>
@@ -271,61 +399,42 @@ export default function SubscribeNewPage() {
               })}
             </CardContent>
           </Card>
-        )}
+        </div>
 
-        {/* Summary and Continue */}
-        <Card className="sticky bottom-4 shadow-2xl border-2">
-          <CardContent className="p-6">
-            <div className="flex items-center justify-between mb-4">
+        {/* Compact Order Summary */}
+        <Card className="sticky bottom-4 shadow-lg border-primary bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-950 dark:to-emerald-950">
+          <CardContent className="p-4">
+            <div className="flex items-center justify-between mb-3">
               <div>
-                <h3 className="text-lg font-semibold">Order Summary</h3>
-                <p className="text-sm text-muted-foreground">
-                  {selectedPlanData?.name} • {billingCycle === "weekly" ? "Weekly" : "Monthly"}
+                <h3 className="font-semibold">{selectedPlanData?.name}</h3>
+                <p className="text-xs text-muted-foreground">
+                  {billingCycle === "weekly" ? "Weekly" : "Monthly"} Plan
+                  {(Object.keys(selectedAddOns).length > 0 || Object.keys(menuItems).length > 0) && 
+                    ` + ${Object.keys(selectedAddOns).length + Object.keys(menuItems).length} extras`
+                  }
                 </p>
               </div>
               <div className="text-right">
-                <div className="text-3xl font-bold text-primary">
+                <div className="text-2xl font-bold text-primary">
                   {formatCurrency(calculateTotal())}
                 </div>
-                <p className="text-sm text-muted-foreground">
+                <p className="text-xs text-muted-foreground">
                   per {billingCycle === "weekly" ? "week" : "month"}
                 </p>
               </div>
             </div>
 
-            {Object.keys(selectedAddOns).length > 0 && (
-              <div className="mb-4 p-3 bg-muted rounded-lg">
-                <p className="text-sm font-medium mb-2">Add-ons:</p>
-                <div className="space-y-1">
-                  {Object.entries(selectedAddOns).map(([addOnId, quantity]) => {
-                    const addOn = addOns?.find(a => a.id === addOnId)
-                    return addOn ? (
-                      <div key={addOnId} className="flex justify-between text-sm">
-                        <span>{addOn.name} × {quantity}</span>
-                        <span className="font-medium">
-                          {formatCurrency(
-                            (parseFloat(billingCycle === "weekly" ? addOn.weeklyPrice : addOn.monthlyPrice) * quantity).toFixed(2)
-                          )}
-                        </span>
-                      </div>
-                    ) : null
-                  })}
-                </div>
-              </div>
-            )}
-
             <Button
-              className="w-full text-lg h-12 bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800"
-              size="lg"
+              className="w-full h-11 bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 shadow-lg"
               onClick={handleContinue}
               disabled={!selectedPlan}
             >
-              Continue to Checkout
-              <ChevronRight className="ml-2 h-5 w-5" />
+              Create Subscription
+              <ChevronRight className="ml-2 h-4 w-4" />
             </Button>
 
-            <p className="text-center text-sm text-muted-foreground mt-4">
-              ✨ Use code <span className="font-bold text-primary">WELCOME25</span> for 25% off your first order
+            <p className="text-center text-xs text-muted-foreground mt-2">
+              ✨ Use code <span className="font-semibold text-primary">WELCOME25</span> for 25% off
             </p>
           </CardContent>
         </Card>
