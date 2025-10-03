@@ -64,7 +64,9 @@ export interface SubscriptionPlan {
   weeklyPrice: string
   monthlyPrice: string
   mealsPerWeek: number
-  active: boolean
+  features?: string[]
+  isActive: boolean
+  active?: boolean // Keep for backwards compatibility
   createdAt: string
   updatedAt: string
 }
@@ -75,7 +77,8 @@ export interface AddOn {
   description: string | null
   weeklyPrice: string
   monthlyPrice: string
-  active: boolean
+  isActive: boolean
+  active?: boolean // Keep for backwards compatibility
   createdAt: string
   updatedAt: string
 }
