@@ -95,7 +95,7 @@ export default function HomePage() {
               <div className="flex flex-col sm:flex-row gap-4 animate-in fade-in-0 slide-in-from-bottom-4 duration-1000 delay-700">
                 <Button asChild size="lg" className="flex-1 sm:flex-initial w-full sm:w-auto text-lg bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 hover:scale-105 transition-all duration-300 hover:shadow-lg group">
                   <Link href="/subscribe-new" className="flex items-center justify-center gap-2">
-                    <span>Get Started - ₹2,999/month</span>
+                    <span>Get Started - ₹2,499/month</span>
                     <TrendingUp className="h-4 w-4 group-hover:translate-x-1 transition-transform duration-200" />
                   </Link>
                 </Button>
@@ -217,7 +217,7 @@ export default function HomePage() {
                     <span className="text-sm text-muted-foreground">Starting from</span>
                     <div className="text-right">
                       <div className="text-2xl font-bold text-green-600 group-hover:scale-105 transition-transform duration-200">
-                        ₹2,999
+                        ₹2,499
                       </div>
                       <div className="text-xs text-muted-foreground">per month</div>
                     </div>
@@ -579,10 +579,10 @@ export default function HomePage() {
                 <div>
                   <div className="flex items-baseline gap-2">
                     <span className="text-4xl font-bold text-primary">₹2,499</span>
-                    <span className="text-lg text-muted-foreground line-through">₹2,999</span>
+                    <span className="text-lg text-muted-foreground line-through">₹3,124</span>
                   </div>
                   <p className="text-sm text-muted-foreground">per month</p>
-                  <Badge className="mt-2 bg-green-100 text-green-800">Save ₹500/month</Badge>
+                  <Badge className="mt-2 bg-green-100 text-green-800">Save ₹625/month (20% OFF)</Badge>
                 </div>
                 <ul className="space-y-3">
                   <li className="flex items-center gap-2">
@@ -630,7 +630,7 @@ export default function HomePage() {
                     <span className="text-xl text-muted-foreground line-through">₹6,249</span>
                   </div>
                   <p className="text-sm text-muted-foreground">per month</p>
-                  <Badge className="mt-2 bg-green-100 text-green-800">Save ₹1,250/month</Badge>
+                  <Badge className="mt-2 bg-green-100 text-green-800">Save ₹1,250/month (20% OFF)</Badge>
                 </div>
                 <ul className="space-y-3">
                   <li className="flex items-center gap-2">

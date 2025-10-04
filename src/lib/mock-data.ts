@@ -38,24 +38,6 @@ export const mockSubscriptionPlans: SubscriptionPlan[] = [
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),
   },
-  {
-    id: "weekend-plan",
-    name: "Weekend Special",
-    description: "Great for busy weekdays",
-    weeklyPrice: "499.00",
-    monthlyPrice: "1999.00",
-    mealsPerWeek: 4,
-    features: [
-      "2 meals on Saturday & Sunday",
-      "Both lunch and dinner",
-      "Free delivery",
-      "Cancel anytime",
-      "Email support",
-    ],
-    isActive: true,
-    createdAt: new Date().toISOString(),
-    updatedAt: new Date().toISOString(),
-  },
 ]
 
 export const mockAddOns: AddOn[] = [
