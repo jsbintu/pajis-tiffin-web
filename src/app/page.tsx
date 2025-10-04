@@ -95,7 +95,7 @@ export default function HomePage() {
               <div className="flex flex-col sm:flex-row gap-4 animate-in fade-in-0 slide-in-from-bottom-4 duration-1000 delay-700">
                 <Button asChild size="lg" className="flex-1 sm:flex-initial w-full sm:w-auto text-lg bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 hover:scale-105 transition-all duration-300 hover:shadow-lg group">
                   <Link href="/subscribe-new" className="flex items-center justify-center gap-2">
-                    <span>Get Started - ₹2,499/month</span>
+                    <span>Get Started - $220/month</span>
                     <TrendingUp className="h-4 w-4 group-hover:translate-x-1 transition-transform duration-200" />
                   </Link>
                 </Button>
@@ -217,7 +217,7 @@ export default function HomePage() {
                     <span className="text-sm text-muted-foreground">Starting from</span>
                     <div className="text-right">
                       <div className="text-2xl font-bold text-green-600 group-hover:scale-105 transition-transform duration-200">
-                        ₹2,499
+                        $220
                       </div>
                       <div className="text-xs text-muted-foreground">per month</div>
                     </div>
@@ -277,9 +277,9 @@ export default function HomePage() {
                     <span className="text-sm text-muted-foreground">Individual meals</span>
                     <div className="text-right">
                       <div className="text-2xl font-bold text-orange-600 group-hover:scale-105 transition-transform duration-200">
-                        ₹180+
+                        $12+
                       </div>
-                      <div className="text-xs text-muted-foreground">per dish</div>
+                      <div className="text-xs text-muted-foreground">per meal</div>
                     </div>
                   </div>
                   
@@ -557,20 +557,20 @@ export default function HomePage() {
       <section id="plans" className="bg-gradient-to-br from-green-50 to-orange-50 dark:from-green-950 dark:to-orange-950 py-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <Badge className="mb-4 bg-red-100 text-red-800 hover:bg-red-100">Limited Time Offer</Badge>
+            <Badge className="mb-4 bg-red-100 text-red-800 hover:bg-red-100">Best Value in GTA</Badge>
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4">
               Choose Your Perfect Plan
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Save up to 20% with our monthly plans. No commitment, cancel anytime.
+              Competitive pricing with premium quality. Free delivery to Mississauga & Brampton.
             </p>
           </div>
 
-          <div className="grid gap-8 lg:grid-cols-2 max-w-5xl mx-auto">
+          <div className="grid gap-8 lg:grid-cols-3 max-w-6xl mx-auto">
             <Card className="border-2 hover:shadow-xl transition-shadow">
               <CardHeader>
                 <div className="flex items-center justify-between mb-2">
-                  <CardTitle className="text-2xl">Basic Plan</CardTitle>
+                  <CardTitle className="text-2xl">Essential Plan</CardTitle>
                   <Badge variant="secondary">Popular</Badge>
                 </div>
                 <CardDescription className="text-base">Perfect for individuals</CardDescription>
@@ -578,11 +578,11 @@ export default function HomePage() {
               <CardContent className="space-y-6">
                 <div>
                   <div className="flex items-baseline gap-2">
-                    <span className="text-4xl font-bold text-primary">₹2,499</span>
-                    <span className="text-lg text-muted-foreground line-through">₹3,124</span>
+                    <span className="text-4xl font-bold text-primary">$220</span>
+                    <span className="text-lg text-muted-foreground">/month</span>
                   </div>
-                  <p className="text-sm text-muted-foreground">per month</p>
-                  <Badge className="mt-2 bg-green-100 text-green-800">Save ₹625/month (20% OFF)</Badge>
+                  <p className="text-sm text-muted-foreground">$11 per meal</p>
+                  <Badge className="mt-2 bg-green-100 text-green-800">Better than $12+ competitors</Badge>
                 </div>
                 <ul className="space-y-3">
                   <li className="flex items-center gap-2">
@@ -591,46 +591,43 @@ export default function HomePage() {
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle2 className="h-5 w-5 text-green-600" />
-                    <span>6 days a week delivery</span>
+                    <span>Monday to Friday delivery</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle2 className="h-5 w-5 text-green-600" />
-                    <span>Free delivery</span>
+                    <span>4 rotis + 1 curry + rice</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="h-5 w-5 text-green-600" />
+                    <span>Free delivery in Mississauga & Brampton</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle2 className="h-5 w-5 text-green-600" />
                     <span>Cancel anytime</span>
                   </li>
-                  <li className="flex items-center gap-2">
-                    <CheckCircle2 className="h-5 w-5 text-green-600" />
-                    <span>Email support</span>
-                  </li>
                 </ul>
                 <Button asChild size="lg" variant="outline" className="w-full text-lg">
-                  <Link href="/subscribe-new">Start Basic Plan</Link>
+                  <Link href="/subscribe-new">Start Essential Plan</Link>
                 </Button>
               </CardContent>
             </Card>
 
-            <Card className="border-4 border-primary shadow-2xl relative overflow-hidden">
-              <div className="absolute top-0 right-0 bg-primary text-primary-foreground px-4 py-1 text-sm font-bold">
-                BEST VALUE - 20% OFF
-              </div>
-              <CardHeader className="pt-8">
+            <Card className="border-2 hover:shadow-xl transition-shadow">
+              <CardHeader>
                 <div className="flex items-center justify-between mb-2">
-                  <CardTitle className="text-2xl">Premium Plan</CardTitle>
-                  <Badge className="bg-yellow-500 text-yellow-950">⭐ Most Popular</Badge>
+                  <CardTitle className="text-2xl">Family Plan</CardTitle>
+                  <Badge className="bg-blue-100 text-blue-800">Best Value</Badge>
                 </div>
-                <CardDescription className="text-base">Best for families</CardDescription>
+                <CardDescription className="text-base">Perfect for families</CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
                 <div>
                   <div className="flex items-baseline gap-2">
-                    <span className="text-5xl font-bold text-primary">₹4,999</span>
-                    <span className="text-xl text-muted-foreground line-through">₹6,249</span>
+                    <span className="text-4xl font-bold text-primary">$380</span>
+                    <span className="text-lg text-muted-foreground">/month</span>
                   </div>
-                  <p className="text-sm text-muted-foreground">per month</p>
-                  <Badge className="mt-2 bg-green-100 text-green-800">Save ₹1,250/month (20% OFF)</Badge>
+                  <p className="text-sm text-muted-foreground">$9.50 per meal</p>
+                  <Badge className="mt-2 bg-green-100 text-green-800">Save $100+ vs competitors</Badge>
                 </div>
                 <ul className="space-y-3">
                   <li className="flex items-center gap-2">
@@ -639,30 +636,78 @@ export default function HomePage() {
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle2 className="h-5 w-5 text-green-600" />
-                    <span>7 days a week delivery</span>
+                    <span>Monday to Friday delivery</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle2 className="h-5 w-5 text-green-600" />
-                    <span>Free delivery & packaging</span>
+                    <span>6 rotis + 2 curries + rice + extras</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle2 className="h-5 w-5 text-green-600" />
-                    <span>Custom menu preferences</span>
+                    <span>Custom dietary preferences</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle2 className="h-5 w-5 text-green-600" />
-                    <span>Priority support 24/7</span>
+                    <span>Priority WhatsApp support</span>
+                  </li>
+                </ul>
+                <Button asChild size="lg" className="w-full text-lg bg-gradient-to-r from-blue-600 to-blue-700">
+                  <Link href="/subscribe-new">Start Family Plan</Link>
+                </Button>
+              </CardContent>
+            </Card>
+
+            <Card className="border-4 border-primary shadow-2xl relative overflow-hidden">
+              <div className="absolute top-0 right-0 bg-primary text-primary-foreground px-4 py-1 text-sm font-bold">
+                ULTIMATE CONVENIENCE
+              </div>
+              <CardHeader className="pt-8">
+                <div className="flex items-center justify-between mb-2">
+                  <CardTitle className="text-2xl">Premium Plan</CardTitle>
+                  <Badge className="bg-yellow-500 text-yellow-950">⭐ 7 Days</Badge>
+                </div>
+                <CardDescription className="text-base">Ultimate convenience - 7 days a week</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                <div>
+                  <div className="flex items-baseline gap-2">
+                    <span className="text-5xl font-bold text-primary">$480</span>
+                    <span className="text-xl text-muted-foreground">/month</span>
+                  </div>
+                  <p className="text-sm text-muted-foreground">$8.50 per meal</p>
+                  <Badge className="mt-2 bg-green-100 text-green-800">Best value per meal!</Badge>
+                </div>
+                <ul className="space-y-3">
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="h-5 w-5 text-green-600" />
+                    <span className="font-semibold">2 meals per day (Lunch & Dinner)</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle2 className="h-5 w-5 text-green-600" />
-                    <span>Special festival menus</span>
+                    <span>7 days a week delivery (including weekends)</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="h-5 w-5 text-green-600" />
+                    <span>8 rotis + 2 curries + rice + sides + dessert</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="h-5 w-5 text-green-600" />
+                    <span>Custom menu planning</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="h-5 w-5 text-green-600" />
+                    <span>24/7 phone support</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="h-5 w-5 text-green-600" />
+                    <span>Special occasion meals</span>
                   </li>
                 </ul>
                 <Button asChild size="lg" className="w-full text-lg bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800">
                   <Link href="/subscribe-new">Start Premium Plan →</Link>
                 </Button>
                 <p className="text-center text-sm text-muted-foreground">
-                  🔥 Only <span className="font-bold text-red-600">3 slots left</span> this week!
+                  🔥 Most comprehensive plan in <span className="font-bold text-green-600">GTA</span>!
                 </p>
               </CardContent>
             </Card>
@@ -670,10 +715,10 @@ export default function HomePage() {
 
           <div className="mt-12 text-center">
             <p className="text-sm text-muted-foreground mb-4">
-              ✨ Special offer: Get your first week FREE on any plan! Use code: <span className="font-bold text-primary">WELCOME25</span>
+              ✨ New customer special: Get your first week for just <span className="font-bold text-primary">$25</span>! (Regular $55-120)
             </p>
             <p className="text-xs text-muted-foreground">
-              All plans include free trial period. Cancel anytime with no questions asked.
+              Serving Mississauga, Brampton & surrounding GTA areas. Cancel anytime with no questions asked.
             </p>
           </div>
         </div>

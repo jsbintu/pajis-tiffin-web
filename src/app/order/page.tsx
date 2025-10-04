@@ -14,56 +14,56 @@ import { cn } from "@/lib/utils"
 // Full menu items for takeout orders - organized by category
 const menuItems = [
   // Main Course
-  { id: 'main1', name: 'Butter Chicken', description: 'Creamy tomato curry with tender chicken', price: 320, image: '🍛', category: 'Main Course', spiceLevel: 'Medium' },
-  { id: 'main2', name: 'Dal Makhani', description: 'Rich black lentils with butter & cream', price: 220, image: '🍲', category: 'Main Course', spiceLevel: 'Mild' },
-  { id: 'main3', name: 'Chicken Biryani', description: 'Fragrant basmati rice with spiced chicken', price: 380, image: '🍚', category: 'Main Course', spiceLevel: 'Medium' },
-  { id: 'main4', name: 'Palak Paneer', description: 'Cottage cheese in creamy spinach gravy', price: 280, image: '🥬', category: 'Main Course', spiceLevel: 'Mild' },
-  { id: 'main5', name: 'Chole Bhature', description: 'Spiced chickpeas with fried bread', price: 260, image: '🍲', category: 'Main Course', spiceLevel: 'Medium' },
-  { id: 'main6', name: 'Rajma Masala', description: 'Kidney beans in thick tomato gravy', price: 240, image: '🍲', category: 'Main Course', spiceLevel: 'Medium' },
-  { id: 'main7', name: 'Paneer Makhani', description: 'Cottage cheese in creamy tomato sauce', price: 300, image: '🍛', category: 'Main Course', spiceLevel: 'Mild' },
-  { id: 'main8', name: 'Mutton Curry', description: 'Tender mutton in aromatic spices', price: 420, image: '🍛', category: 'Main Course', spiceLevel: 'Hot' },
-  { id: 'main9', name: 'Fish Curry', description: 'Fresh fish in coconut curry', price: 360, image: '🍛', category: 'Main Course', spiceLevel: 'Medium' },
-  { id: 'main10', name: 'Egg Curry', description: 'Boiled eggs in spiced gravy', price: 200, image: '🍛', category: 'Main Course', spiceLevel: 'Medium' },
+  { id: 'main1', name: 'Butter Chicken', description: 'Creamy tomato curry with tender chicken', price: 16, image: '🍛', category: 'Main Course', spiceLevel: 'Medium' },
+  { id: 'main2', name: 'Dal Makhani', description: 'Rich black lentils with butter & cream', price: 12, image: '🍲', category: 'Main Course', spiceLevel: 'Mild' },
+  { id: 'main3', name: 'Chicken Biryani', description: 'Fragrant basmati rice with spiced chicken', price: 18, image: '🍚', category: 'Main Course', spiceLevel: 'Medium' },
+  { id: 'main4', name: 'Palak Paneer', description: 'Cottage cheese in creamy spinach gravy', price: 14, image: '🥬', category: 'Main Course', spiceLevel: 'Mild' },
+  { id: 'main5', name: 'Chole Bhature', description: 'Spiced chickpeas with fried bread', price: 13, image: '🍲', category: 'Main Course', spiceLevel: 'Medium' },
+  { id: 'main6', name: 'Rajma Masala', description: 'Kidney beans in thick tomato gravy', price: 12, image: '🍲', category: 'Main Course', spiceLevel: 'Medium' },
+  { id: 'main7', name: 'Paneer Makhani', description: 'Cottage cheese in creamy tomato sauce', price: 15, image: '🍛', category: 'Main Course', spiceLevel: 'Mild' },
+  { id: 'main8', name: 'Mutton Curry', description: 'Tender mutton in aromatic spices', price: 20, image: '🍛', category: 'Main Course', spiceLevel: 'Hot' },
+  { id: 'main9', name: 'Fish Curry', description: 'Fresh fish in coconut curry', price: 17, image: '🍛', category: 'Main Course', spiceLevel: 'Medium' },
+  { id: 'main10', name: 'Egg Curry', description: 'Boiled eggs in spiced gravy', price: 10, image: '🍛', category: 'Main Course', spiceLevel: 'Medium' },
   
   // Appetizers
-  { id: 'app1', name: 'Paneer Tikka', description: 'Grilled cottage cheese with spices', price: 280, image: '🧆', category: 'Appetizer', spiceLevel: 'Medium' },
-  { id: 'app2', name: 'Chicken Tikka', description: 'Marinated grilled chicken pieces', price: 320, image: '🍗', category: 'Appetizer', spiceLevel: 'Medium' },
-  { id: 'app3', name: 'Seekh Kebab', description: 'Minced meat skewers with spices', price: 340, image: '🍢', category: 'Appetizer', spiceLevel: 'Hot' },
-  { id: 'app4', name: 'Samosa (3 pcs)', description: 'Crispy pastry with spiced potato filling', price: 120, image: '🥟', category: 'Appetizer', spiceLevel: 'Mild' },
-  { id: 'app5', name: 'Mixed Pakora', description: 'Assorted fritters with mint chutney', price: 140, image: '🧄', category: 'Appetizer', spiceLevel: 'Medium' },
-  { id: 'app6', name: 'Aloo Tikki', description: 'Spiced potato patties with chutneys', price: 100, image: '🥔', category: 'Appetizer', spiceLevel: 'Medium' },
+  { id: 'app1', name: 'Paneer Tikka', description: 'Grilled cottage cheese with spices', price: 14, image: '🧆', category: 'Appetizer', spiceLevel: 'Medium' },
+  { id: 'app2', name: 'Chicken Tikka', description: 'Marinated grilled chicken pieces', price: 15, image: '🍗', category: 'Appetizer', spiceLevel: 'Medium' },
+  { id: 'app3', name: 'Seekh Kebab', description: 'Minced meat skewers with spices', price: 16, image: '🍢', category: 'Appetizer', spiceLevel: 'Hot' },
+  { id: 'app4', name: 'Samosa (3 pcs)', description: 'Crispy pastry with spiced potato filling', price: 6, image: '🥟', category: 'Appetizer', spiceLevel: 'Mild' },
+  { id: 'app5', name: 'Mixed Pakora', description: 'Assorted fritters with mint chutney', price: 7, image: '🧄', category: 'Appetizer', spiceLevel: 'Medium' },
+  { id: 'app6', name: 'Aloo Tikki', description: 'Spiced potato patties with chutneys', price: 5, image: '🥔', category: 'Appetizer', spiceLevel: 'Medium' },
   
   // Breads
-  { id: 'bread1', name: 'Butter Naan', description: 'Soft leavened flatbread with butter', price: 50, image: '🥖', category: 'Bread', spiceLevel: 'None' },
-  { id: 'bread2', name: 'Garlic Naan', description: 'Naan topped with fresh garlic', price: 60, image: '🧄', category: 'Bread', spiceLevel: 'Mild' },
-  { id: 'bread3', name: 'Cheese Naan', description: 'Naan stuffed with melted cheese', price: 80, image: '🧀', category: 'Bread', spiceLevel: 'None' },
-  { id: 'bread4', name: 'Tandoori Roti', description: 'Whole wheat flatbread from tandoor', price: 40, image: '🫓', category: 'Bread', spiceLevel: 'None' },
-  { id: 'bread5', name: 'Kulcha', description: 'Leavened bread with onions/potato', price: 55, image: '🥖', category: 'Bread', spiceLevel: 'Mild' },
-  { id: 'bread6', name: 'Paratha', description: 'Layered flatbread with ghee', price: 45, image: '🥞', category: 'Bread', spiceLevel: 'None' },
-  { id: 'bread7', name: 'Plain Naan', description: 'Classic soft leavened bread', price: 40, image: '🥖', category: 'Bread', spiceLevel: 'None' },
+  { id: 'bread1', name: 'Butter Naan', description: 'Soft leavened flatbread with butter', price: 3, image: '🥖', category: 'Bread', spiceLevel: 'None' },
+  { id: 'bread2', name: 'Garlic Naan', description: 'Naan topped with fresh garlic', price: 3.50, image: '🧄', category: 'Bread', spiceLevel: 'Mild' },
+  { id: 'bread3', name: 'Cheese Naan', description: 'Naan stuffed with melted cheese', price: 4.50, image: '🧀', category: 'Bread', spiceLevel: 'None' },
+  { id: 'bread4', name: 'Tandoori Roti', description: 'Whole wheat flatbread from tandoor', price: 2, image: '🫓', category: 'Bread', spiceLevel: 'None' },
+  { id: 'bread5', name: 'Kulcha', description: 'Leavened bread with onions/potato', price: 3, image: '🥖', category: 'Bread', spiceLevel: 'Mild' },
+  { id: 'bread6', name: 'Paratha', description: 'Layered flatbread with ghee', price: 2.50, image: '🥞', category: 'Bread', spiceLevel: 'None' },
+  { id: 'bread7', name: 'Plain Naan', description: 'Classic soft leavened bread', price: 2.50, image: '🥖', category: 'Bread', spiceLevel: 'None' },
   
   // Rice
-  { id: 'rice1', name: 'Steamed Rice', description: 'Perfectly cooked basmati rice', price: 80, image: '🍚', category: 'Rice', spiceLevel: 'None' },
-  { id: 'rice2', name: 'Jeera Rice', description: 'Cumin flavored basmati rice', price: 120, image: '🍚', category: 'Rice', spiceLevel: 'Mild' },
-  { id: 'rice3', name: 'Veg Pulao', description: 'Mixed vegetable pilaf rice', price: 160, image: '🍚', category: 'Rice', spiceLevel: 'Mild' },
-  { id: 'rice4', name: 'Lemon Rice', description: 'Tangy rice with curry leaves', price: 100, image: '🍋', category: 'Rice', spiceLevel: 'Mild' },
-  { id: 'rice5', name: 'Coconut Rice', description: 'Rice cooked in coconut milk', price: 110, image: '🥥', category: 'Rice', spiceLevel: 'Mild' },
+  { id: 'rice1', name: 'Steamed Rice', description: 'Perfectly cooked basmati rice', price: 4, image: '🍚', category: 'Rice', spiceLevel: 'None' },
+  { id: 'rice2', name: 'Jeera Rice', description: 'Cumin flavored basmati rice', price: 6, image: '🍚', category: 'Rice', spiceLevel: 'Mild' },
+  { id: 'rice3', name: 'Veg Pulao', description: 'Mixed vegetable pilaf rice', price: 8, image: '🍚', category: 'Rice', spiceLevel: 'Mild' },
+  { id: 'rice4', name: 'Lemon Rice', description: 'Tangy rice with curry leaves', price: 5, image: '🍋', category: 'Rice', spiceLevel: 'Mild' },
+  { id: 'rice5', name: 'Coconut Rice', description: 'Rice cooked in coconut milk', price: 5.50, image: '🥥', category: 'Rice', spiceLevel: 'Mild' },
   
   // Desserts
-  { id: 'dessert1', name: 'Gulab Jamun (3 pcs)', description: 'Sweet milk dumplings in syrup', price: 150, image: '🍡', category: 'Dessert', spiceLevel: 'None' },
-  { id: 'dessert2', name: 'Rice Kheer', description: 'Creamy rice pudding with nuts', price: 120, image: '🍮', category: 'Dessert', spiceLevel: 'None' },
-  { id: 'dessert3', name: 'Rasmalai (2 pcs)', description: 'Cottage cheese in sweet milk', price: 180, image: '🧈', category: 'Dessert', spiceLevel: 'None' },
-  { id: 'dessert4', name: 'Kulfi', description: 'Traditional Indian ice cream', price: 100, image: '🍦', category: 'Dessert', spiceLevel: 'None' },
-  { id: 'dessert5', name: 'Gajar Halwa', description: 'Carrot pudding with ghee and nuts', price: 140, image: '🥕', category: 'Dessert', spiceLevel: 'None' },
-  { id: 'dessert6', name: 'Jalebi (4 pcs)', description: 'Crispy spirals in sugar syrup', price: 130, image: '🍩', category: 'Dessert', spiceLevel: 'None' },
+  { id: 'dessert1', name: 'Gulab Jamun (3 pcs)', description: 'Sweet milk dumplings in syrup', price: 7.50, image: '🍡', category: 'Dessert', spiceLevel: 'None' },
+  { id: 'dessert2', name: 'Rice Kheer', description: 'Creamy rice pudding with nuts', price: 6, image: '🍮', category: 'Dessert', spiceLevel: 'None' },
+  { id: 'dessert3', name: 'Rasmalai (2 pcs)', description: 'Cottage cheese in sweet milk', price: 9, image: '🧈', category: 'Dessert', spiceLevel: 'None' },
+  { id: 'dessert4', name: 'Kulfi', description: 'Traditional Indian ice cream', price: 5, image: '🍦', category: 'Dessert', spiceLevel: 'None' },
+  { id: 'dessert5', name: 'Gajar Halwa', description: 'Carrot pudding with ghee and nuts', price: 7, image: '🥕', category: 'Dessert', spiceLevel: 'None' },
+  { id: 'dessert6', name: 'Jalebi (4 pcs)', description: 'Crispy spirals in sugar syrup', price: 6.50, image: '🍩', category: 'Dessert', spiceLevel: 'None' },
   
   // Beverages
-  { id: 'bev1', name: 'Mango Lassi', description: 'Sweet yogurt drink with mango', price: 80, image: '🥭', category: 'Beverage', spiceLevel: 'None' },
-  { id: 'bev2', name: 'Sweet Lassi', description: 'Traditional sweet yogurt drink', price: 70, image: '🥛', category: 'Beverage', spiceLevel: 'None' },
-  { id: 'bev3', name: 'Masala Chai', description: 'Spiced Indian tea with milk', price: 40, image: '☕', category: 'Beverage', spiceLevel: 'Mild' },
-  { id: 'bev4', name: 'Fresh Lime Water', description: 'Refreshing lime water with mint', price: 50, image: '🍋', category: 'Beverage', spiceLevel: 'None' },
-  { id: 'bev5', name: 'Buttermilk', description: 'Spiced churned yogurt drink', price: 60, image: '🥛', category: 'Beverage', spiceLevel: 'Mild' },
-  { id: 'bev6', name: 'Rose Sharbat', description: 'Sweet rose flavored drink', price: 70, image: '🌹', category: 'Beverage', spiceLevel: 'None' },
+  { id: 'bev1', name: 'Mango Lassi', description: 'Sweet yogurt drink with mango', price: 4, image: '🥭', category: 'Beverage', spiceLevel: 'None' },
+  { id: 'bev2', name: 'Sweet Lassi', description: 'Traditional sweet yogurt drink', price: 3.50, image: '🥛', category: 'Beverage', spiceLevel: 'None' },
+  { id: 'bev3', name: 'Masala Chai', description: 'Spiced Indian tea with milk', price: 2, image: '☕', category: 'Beverage', spiceLevel: 'Mild' },
+  { id: 'bev4', name: 'Fresh Lime Water', description: 'Refreshing lime water with mint', price: 2.50, image: '🍋', category: 'Beverage', spiceLevel: 'None' },
+  { id: 'bev5', name: 'Buttermilk', description: 'Spiced churned yogurt drink', price: 3, image: '🥛', category: 'Beverage', spiceLevel: 'Mild' },
+  { id: 'bev6', name: 'Rose Sharbat', description: 'Sweet rose flavored drink', price: 3.50, image: '🌹', category: 'Beverage', spiceLevel: 'None' },
 ]
 
 const categories = ["All", ...Array.from(new Set(menuItems.map(item => item.category)))]
@@ -264,7 +264,7 @@ export default function OrderPage() {
                                   )}
                                 </div>
                                 <p className="text-sm text-muted-foreground mb-2">{item.description}</p>
-                                <p className="text-lg font-bold text-orange-600">₹{item.price}</p>
+                                <p className="text-lg font-bold text-orange-600">${item.price}</p>
                               </div>
                             </div>
                             <div className="flex items-center gap-2">
