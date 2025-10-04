@@ -14,7 +14,8 @@ import {
   ChefHat,
   Leaf,
   Heart,
-  TrendingUp
+  TrendingUp,
+  Utensils
 } from "lucide-react"
 
 const menuItems = [
@@ -43,11 +44,11 @@ export default function HomePage() {
             Pajis Kitchen
           </Link>
           <nav className="flex items-center gap-4">
-            <Link href="/menu" className="hidden sm:inline text-sm font-medium hover:text-primary transition-colors">
+            <Link href="/menu" className="hidden sm:inline text-sm font-medium hover:text-primary transition-colors hover:scale-105 duration-200">
               Menu
             </Link>
-            <Link href="/order" className="hidden sm:inline text-sm font-medium hover:text-primary transition-colors">
-              Order Now
+            <Link href="/order" className="hidden sm:inline text-sm font-medium hover:text-primary transition-all duration-200 hover:scale-105">
+              Takeout
             </Link>
             <Link href="/manage-subscription" className="hidden md:inline text-sm font-medium hover:text-primary transition-colors">
               Manage
@@ -69,78 +70,84 @@ export default function HomePage() {
       <section className="relative overflow-hidden bg-gradient-to-br from-green-50 via-white to-orange-50 dark:from-green-950 dark:via-background dark:to-orange-950">
         <div className="container mx-auto px-4 py-16 sm:py-24 lg:py-32">
           <div className="grid gap-12 lg:grid-cols-2 lg:gap-8 items-center">
-            <div className="flex flex-col justify-center space-y-8">
+            <div className="flex flex-col justify-center space-y-8 animate-in fade-in-0 slide-in-from-left-4 duration-1000">
               <div className="space-y-4">
-                <Badge className="w-fit bg-green-100 text-green-800 hover:bg-green-100 dark:bg-green-900 dark:text-green-100">
-                  <Star className="mr-1 h-3 w-3 fill-current" />
+                <Badge className="w-fit bg-green-100 text-green-800 hover:bg-green-100 dark:bg-green-900 dark:text-green-100 hover:scale-105 transition-transform duration-200 animate-in fade-in-0 slide-in-from-top-2 duration-700 delay-300">
+                  <Star className="mr-1 h-3 w-3 fill-current animate-pulse" />
                   Over 10,000+ Happy Customers
                 </Badge>
-                <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
+                <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none animate-in fade-in-0 slide-in-from-bottom-4 duration-1000 delay-200">
                   Authentic Home-Style
                   <br />
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-orange-600">
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-orange-600 animate-gradient-x">
                     Indian Meals
                   </span>
                   <br />
                   Delivered Fresh Daily
                 </h1>
-                <p className="max-w-[600px] text-lg text-muted-foreground">
+                <p className="max-w-[600px] text-lg text-muted-foreground animate-in fade-in-0 slide-in-from-bottom-4 duration-1000 delay-500">
                   Skip the cooking. Enjoy restaurant-quality, home-cooked Indian meals prepared by expert chefs.
-                  Fresh ingredients, authentic recipes, delivered to your door.
+                  Fresh ingredients, authentic recipes, delivered to your door or ready for pickup.
                 </p>
               </div>
               
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Button asChild size="lg" className="flex-1 sm:flex-initial w-full sm:w-auto text-lg bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800">
-                  <Link href="/subscribe-new">Get Started - ₹2,999/month</Link>
+              <div className="flex flex-col sm:flex-row gap-4 animate-in fade-in-0 slide-in-from-bottom-4 duration-1000 delay-700">
+                <Button asChild size="lg" className="flex-1 sm:flex-initial w-full sm:w-auto text-lg bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 hover:scale-105 transition-all duration-300 hover:shadow-lg group">
+                  <Link href="/subscribe-new" className="flex items-center justify-center gap-2">
+                    <span>Get Started - ₹2,999/month</span>
+                    <TrendingUp className="h-4 w-4 group-hover:translate-x-1 transition-transform duration-200" />
+                  </Link>
                 </Button>
-                <Button asChild size="lg" variant="outline" className="flex-1 sm:flex-initial w-full sm:w-auto text-lg">
-                  <Link href="/menu">View Full Menu</Link>
+                <Button asChild size="lg" variant="outline" className="flex-1 sm:flex-initial w-full sm:w-auto text-lg hover:scale-105 transition-all duration-300 hover:shadow-md group">
+                  <Link href="/menu" className="flex items-center justify-center gap-2">
+                    <span>View Full Menu</span>
+                    <Utensils className="h-4 w-4 group-hover:rotate-12 transition-transform duration-200" />
+                  </Link>
                 </Button>
               </div>
 
-              <div className="flex flex-wrap gap-6 pt-4">
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="h-5 w-5 text-green-600" />
+              <div className="flex flex-wrap gap-6 pt-4 animate-in fade-in-0 slide-in-from-bottom-4 duration-1000 delay-1000">
+                <div className="flex items-center gap-2 hover:scale-105 transition-transform duration-200 group">
+                  <CheckCircle2 className="h-5 w-5 text-green-600 group-hover:animate-pulse" />
                   <span className="text-sm font-medium">No Cooking Required</span>
                 </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="h-5 w-5 text-green-600" />
+                <div className="flex items-center gap-2 hover:scale-105 transition-transform duration-200 group">
+                  <CheckCircle2 className="h-5 w-5 text-green-600 group-hover:animate-pulse" />
                   <span className="text-sm font-medium">Cancel Anytime</span>
                 </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="h-5 w-5 text-green-600" />
+                <div className="flex items-center gap-2 hover:scale-105 transition-transform duration-200 group">
+                  <CheckCircle2 className="h-5 w-5 text-green-600 group-hover:animate-pulse" />
                   <span className="text-sm font-medium">Fresh Daily</span>
                 </div>
               </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
-              <Card className="border-2 hover:shadow-lg transition-shadow">
+            <div className="grid grid-cols-2 gap-4 animate-in fade-in-0 slide-in-from-right-4 duration-1000 delay-300">
+              <Card className="border-2 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 hover:border-green-400 group cursor-pointer">
                 <CardContent className="p-6 text-center">
-                  <div className="text-4xl mb-2">🍛</div>
-                  <div className="text-2xl font-bold text-primary">200+</div>
+                  <div className="text-4xl mb-2 group-hover:scale-125 transition-transform duration-300">🍛</div>
+                  <div className="text-2xl font-bold text-primary group-hover:scale-110 transition-transform duration-200">200+</div>
                   <div className="text-sm text-muted-foreground">Dishes Available</div>
                 </CardContent>
               </Card>
-              <Card className="border-2 hover:shadow-lg transition-shadow">
+              <Card className="border-2 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 hover:border-yellow-400 group cursor-pointer">
                 <CardContent className="p-6 text-center">
-                  <div className="text-4xl mb-2">⭐</div>
-                  <div className="text-2xl font-bold text-primary">4.9/5</div>
+                  <div className="text-4xl mb-2 group-hover:animate-bounce">⭐</div>
+                  <div className="text-2xl font-bold text-primary group-hover:scale-110 transition-transform duration-200">4.9/5</div>
                   <div className="text-sm text-muted-foreground">Customer Rating</div>
                 </CardContent>
               </Card>
-              <Card className="border-2 hover:shadow-lg transition-shadow">
+              <Card className="border-2 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 hover:border-blue-400 group cursor-pointer">
                 <CardContent className="p-6 text-center">
-                  <div className="text-4xl mb-2">🚚</div>
-                  <div className="text-2xl font-bold text-primary">99%</div>
+                  <div className="text-4xl mb-2 group-hover:animate-pulse">🚚</div>
+                  <div className="text-2xl font-bold text-primary group-hover:scale-110 transition-transform duration-200">99%</div>
                   <div className="text-sm text-muted-foreground">On-Time Delivery</div>
                 </CardContent>
               </Card>
-              <Card className="border-2 hover:shadow-lg transition-shadow">
+              <Card className="border-2 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 hover:border-orange-400 group cursor-pointer">
                 <CardContent className="p-6 text-center">
-                  <div className="text-4xl mb-2">👨‍🍳</div>
-                  <div className="text-2xl font-bold text-primary">15+</div>
+                  <div className="text-4xl mb-2 group-hover:scale-125 transition-transform duration-300">👨‍🍳</div>
+                  <div className="text-2xl font-bold text-primary group-hover:scale-110 transition-transform duration-200">15+</div>
                   <div className="text-sm text-muted-foreground">Expert Chefs</div>
                 </CardContent>
               </Card>
@@ -238,10 +245,10 @@ export default function HomePage() {
                   </Badge>
                 </div>
                 <CardTitle className="text-2xl font-bold text-orange-800 dark:text-orange-200 group-hover:text-orange-900 dark:group-hover:text-orange-100 transition-colors">
-                  Same-Day Order
+                  Takeout Orders
                 </CardTitle>
                 <CardDescription className="text-base">
-                  Order now for pickup or delivery today. Perfect for special occasions!
+                  Fresh meals ready for pickup or delivery today. Perfect for special occasions!
                 </CardDescription>
               </CardHeader>
               <CardContent className="relative z-10 space-y-4">
@@ -277,7 +284,7 @@ export default function HomePage() {
                   
                   <Button asChild variant="outline" className="w-full border-orange-600 text-orange-600 hover:bg-orange-50 hover:border-orange-700 group-hover:shadow-lg transition-all duration-300">
                     <Link href="/order" className="flex items-center justify-center gap-2">
-                      <span>Order Now</span>
+                      <span>Order Takeout</span>
                       <Truck className="h-4 w-4 group-hover:translate-x-1 transition-transform duration-200" />
                     </Link>
                   </Button>
@@ -298,7 +305,7 @@ export default function HomePage() {
                   <div className="hidden sm:block w-px h-6 bg-gray-300" />
                   <div className="flex items-center gap-2">
                     <Clock className="h-4 w-4 text-orange-600" />
-                    <span><strong>Same-Day:</strong> Perfect for events & special meals</span>
+                    <span><strong>Takeout:</strong> Perfect for events & special meals</span>
                   </div>
                 </div>
               </CardContent>
@@ -311,20 +318,20 @@ export default function HomePage() {
       <section className="border-y bg-muted/30 py-8">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 gap-6 md:grid-cols-4">
-            <div className="flex items-center justify-center gap-2">
-              <Shield className="h-5 w-5 text-green-600" />
+            <div className="flex items-center justify-center gap-2 hover:scale-105 transition-transform duration-200 group cursor-pointer">
+              <Shield className="h-5 w-5 text-green-600 group-hover:animate-pulse" />
               <span className="text-sm font-medium">100% Safe & Hygienic</span>
             </div>
-            <div className="flex items-center justify-center gap-2">
-              <Truck className="h-5 w-5 text-green-600" />
+            <div className="flex items-center justify-center gap-2 hover:scale-105 transition-transform duration-200 group cursor-pointer">
+              <Truck className="h-5 w-5 text-green-600 group-hover:translate-x-1 transition-transform duration-200" />
               <span className="text-sm font-medium">Free Delivery</span>
             </div>
-            <div className="flex items-center justify-center gap-2">
-              <Leaf className="h-5 w-5 text-green-600" />
+            <div className="flex items-center justify-center gap-2 hover:scale-105 transition-transform duration-200 group cursor-pointer">
+              <Leaf className="h-5 w-5 text-green-600 group-hover:rotate-12 transition-transform duration-200" />
               <span className="text-sm font-medium">Fresh Ingredients</span>
             </div>
-            <div className="flex items-center justify-center gap-2">
-              <Heart className="h-5 w-5 text-green-600" />
+            <div className="flex items-center justify-center gap-2 hover:scale-105 transition-transform duration-200 group cursor-pointer">
+              <Heart className="h-5 w-5 text-green-600 group-hover:animate-bounce" />
               <span className="text-sm font-medium">Made with Love</span>
             </div>
           </div>
@@ -335,45 +342,58 @@ export default function HomePage() {
       <section id="menu" className="py-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <Badge className="mb-4">Our Menu</Badge>
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4">
+            <Badge className="mb-4 hover:scale-105 transition-transform duration-200 cursor-pointer">Our Menu</Badge>
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4 hover:text-primary transition-colors duration-300 cursor-pointer">
               Today's Featured Dishes
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto hover:text-foreground/80 transition-colors duration-300">
               Authentic recipes passed down through generations. All dishes made fresh daily with premium ingredients.
             </p>
           </div>
 
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {menuItems.map((item, index) => (
-              <Card key={index} className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2">
-                <CardContent className="p-6">
+              <Card key={index} className="group hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border-2 hover:border-primary/50 cursor-pointer overflow-hidden relative">
+                <div className="absolute inset-0 bg-gradient-to-br from-green-400/5 to-orange-400/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <CardContent className="p-6 relative z-10">
                   <div className="flex items-start justify-between mb-3">
-                    <div className="text-5xl">{item.image}</div>
-                    <Badge variant="secondary">{item.category}</Badge>
+                    <div className="text-5xl group-hover:scale-125 transition-transform duration-300">{item.image}</div>
+                    <Badge variant="secondary" className="group-hover:scale-105 transition-transform duration-200">{item.category}</Badge>
                   </div>
-                  <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">{item.name}</h3>
-                  <p className="text-sm text-muted-foreground mb-4">{item.description}</p>
-                  <div className="flex items-center justify-between">
-                    <span className="text-2xl font-bold text-primary">{item.price}</span>
+                  <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors duration-200">{item.name}</h3>
+                  <p className="text-sm text-muted-foreground mb-4 group-hover:text-foreground/70 transition-colors duration-200">{item.description}</p>
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="text-2xl font-bold text-primary group-hover:scale-110 transition-transform duration-200">{item.price}</span>
                     <div className="flex items-center gap-1 text-yellow-500">
-                      <Star className="h-4 w-4 fill-current" />
-                      <Star className="h-4 w-4 fill-current" />
-                      <Star className="h-4 w-4 fill-current" />
-                      <Star className="h-4 w-4 fill-current" />
-                      <Star className="h-4 w-4 fill-current" />
+                      {[...Array(5)].map((_, i) => (
+                        <Star key={i} className="h-4 w-4 fill-current group-hover:animate-pulse" style={{ animationDelay: `${i * 100}ms` }} />
+                      ))}
                     </div>
                   </div>
+                  <Button size="sm" className="w-full group-hover:shadow-lg transition-all duration-300 hover:scale-105 bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700">
+                    Add to Takeout
+                  </Button>
                 </CardContent>
               </Card>
             ))}
           </div>
 
           <div className="text-center mt-12">
-            <p className="text-muted-foreground mb-4">And 200+ more delicious dishes in our rotating menu!</p>
-            <Button asChild size="lg" className="bg-gradient-to-r from-green-600 to-green-700">
-              <Link href="/menu">View Full Menu & Subscribe</Link>
-            </Button>
+            <p className="text-muted-foreground mb-4 hover:text-foreground/80 transition-colors duration-300">And 200+ more delicious dishes in our rotating menu!</p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <Button asChild size="lg" className="bg-gradient-to-r from-green-600 to-green-700 hover:scale-105 transition-all duration-300 hover:shadow-lg group">
+                <Link href="/subscribe-new" className="flex items-center gap-2">
+                  <span>Start Subscription</span>
+                  <Users className="h-4 w-4 group-hover:translate-x-1 transition-transform duration-200" />
+                </Link>
+              </Button>
+              <Button asChild size="lg" variant="outline" className="border-orange-600 text-orange-600 hover:bg-orange-50 hover:scale-105 transition-all duration-300 hover:shadow-lg group">
+                <Link href="/order" className="flex items-center gap-2">
+                  <span>Order Takeout</span>
+                  <Clock className="h-4 w-4 group-hover:translate-x-1 transition-transform duration-200" />
+                </Link>
+              </Button>
+            </div>
           </div>
         </div>
       </section>
@@ -382,31 +402,31 @@ export default function HomePage() {
       <section id="testimonials" className="bg-gradient-to-br from-green-50 to-orange-50 dark:from-green-950 dark:to-orange-950 py-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <Badge className="mb-4">Customer Reviews</Badge>
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4">
+            <Badge className="mb-4 hover:scale-105 transition-transform duration-200 cursor-pointer">Customer Reviews</Badge>
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4 hover:text-primary transition-colors duration-300 cursor-pointer">
               What Our Customers Say
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto hover:text-foreground/80 transition-colors duration-300">
               Join thousands of satisfied customers who trust Pajis Kitchen for their daily meals
             </p>
           </div>
 
           <div className="grid gap-6 md:grid-cols-3">
             {testimonials.map((testimonial, index) => (
-              <Card key={index} className="border-2">
+              <Card key={index} className="border-2 hover:shadow-xl hover:-translate-y-2 transition-all duration-500 hover:border-primary/50 group cursor-pointer">
                 <CardContent className="p-6">
                   <div className="flex items-center gap-1 mb-4 text-yellow-500">
                     {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} className="h-5 w-5 fill-current" />
+                      <Star key={i} className="h-5 w-5 fill-current group-hover:animate-pulse" style={{ animationDelay: `${i * 100}ms` }} />
                     ))}
                   </div>
-                  <p className="text-sm mb-4 italic">"{testimonial.text}"</p>
+                  <p className="text-sm mb-4 italic group-hover:text-foreground/90 transition-colors duration-200">"{testimonial.text}"</p>
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center text-white font-bold">
+                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center text-white font-bold group-hover:scale-110 transition-transform duration-300">
                       {testimonial.name.charAt(0)}
                     </div>
                     <div>
-                      <p className="font-semibold">{testimonial.name}</p>
+                      <p className="font-semibold group-hover:text-primary transition-colors duration-200">{testimonial.name}</p>
                       <p className="text-xs text-muted-foreground">{testimonial.location}</p>
                     </div>
                   </div>
@@ -425,37 +445,37 @@ export default function HomePage() {
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <Badge className="mb-4">Simple Process</Badge>
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4">
+            <Badge className="mb-4 hover:scale-105 transition-transform duration-200 cursor-pointer">Simple Process</Badge>
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4 hover:text-primary transition-colors duration-300 cursor-pointer">
               How It Works
             </h2>
           </div>
 
           <div className="grid gap-8 md:grid-cols-3">
-            <div className="text-center">
-              <div className="w-16 h-16 rounded-full bg-gradient-to-br from-green-500 to-green-600 text-white text-2xl font-bold flex items-center justify-center mx-auto mb-4">
+            <div className="text-center group cursor-pointer hover:-translate-y-2 transition-all duration-300">
+              <div className="w-16 h-16 rounded-full bg-gradient-to-br from-green-500 to-green-600 text-white text-2xl font-bold flex items-center justify-center mx-auto mb-4 group-hover:scale-110 group-hover:animate-pulse transition-all duration-300">
                 1
               </div>
-              <h3 className="text-xl font-bold mb-2">Choose Your Plan</h3>
-              <p className="text-muted-foreground">
+              <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors duration-200">Choose Your Plan</h3>
+              <p className="text-muted-foreground group-hover:text-foreground/80 transition-colors duration-200">
                 Select from our flexible weekly or monthly subscription plans
               </p>
             </div>
-            <div className="text-center">
-              <div className="w-16 h-16 rounded-full bg-gradient-to-br from-green-500 to-green-600 text-white text-2xl font-bold flex items-center justify-center mx-auto mb-4">
+            <div className="text-center group cursor-pointer hover:-translate-y-2 transition-all duration-300">
+              <div className="w-16 h-16 rounded-full bg-gradient-to-br from-green-500 to-green-600 text-white text-2xl font-bold flex items-center justify-center mx-auto mb-4 group-hover:scale-110 group-hover:animate-pulse transition-all duration-300">
                 2
               </div>
-              <h3 className="text-xl font-bold mb-2">Customize Your Menu</h3>
-              <p className="text-muted-foreground">
+              <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors duration-200">Customize Your Menu</h3>
+              <p className="text-muted-foreground group-hover:text-foreground/80 transition-colors duration-200">
                 Pick your favorite dishes from our extensive rotating menu
               </p>
             </div>
-            <div className="text-center">
-              <div className="w-16 h-16 rounded-full bg-gradient-to-br from-green-500 to-green-600 text-white text-2xl font-bold flex items-center justify-center mx-auto mb-4">
+            <div className="text-center group cursor-pointer hover:-translate-y-2 transition-all duration-300">
+              <div className="w-16 h-16 rounded-full bg-gradient-to-br from-green-500 to-green-600 text-white text-2xl font-bold flex items-center justify-center mx-auto mb-4 group-hover:scale-110 group-hover:animate-pulse transition-all duration-300">
                 3
               </div>
-              <h3 className="text-xl font-bold mb-2">Enjoy Fresh Meals</h3>
-              <p className="text-muted-foreground">
+              <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors duration-200">Enjoy Fresh Meals</h3>
+              <p className="text-muted-foreground group-hover:text-foreground/80 transition-colors duration-200">
                 Receive hot, fresh meals delivered right to your doorstep
               </p>
             </div>
