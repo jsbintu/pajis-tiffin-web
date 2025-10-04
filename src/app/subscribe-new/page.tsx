@@ -25,7 +25,7 @@ export default function SubscribeNewPage() {
   const [selectedPlan, setSelectedPlan] = useState<string>("") 
   const [billingCycle, setBillingCycle] = useState<"weekly" | "monthly">("monthly")
   const [selectedAddOns, setSelectedAddOns] = useState<Record<string, number>>({})
-  const [menuItems, setMenuItems] = useState<Record<string, { quantity: number; frequency: 'daily' | 'specific' }>>({})
+  const [menuItems, setMenuItems] = useState<Record<string, number>>({})
   
   const steps = [
     { number: 1, title: "Choose Plan", description: "Select your meal plan" },
@@ -42,49 +42,43 @@ export default function SubscribeNewPage() {
 
   const selectedPlanData = plans?.find(p => p.id === selectedPlan)
   
-  // Comprehensive menu items
+  // Subscription extras menu items (no main courses, discounted prices)
   const mockMenuItems = [
-    // Main Courses
-    { id: 'butter-chicken', name: 'Butter Chicken', price: 280, emoji: '🍛', category: 'Main Course' },
-    { id: 'dal-makhani', name: 'Dal Makhani', price: 180, emoji: '🍲', category: 'Main Course' },
-    { id: 'biryani', name: 'Chicken Biryani', price: 250, emoji: '🍚', category: 'Main Course' },
-    { id: 'palak-paneer', name: 'Palak Paneer', price: 220, emoji: '🥬', category: 'Main Course' },
-    { id: 'chicken-curry', name: 'Chicken Curry', price: 260, emoji: '🍛', category: 'Main Course' },
-    { id: 'mutton-curry', name: 'Mutton Curry', price: 320, emoji: '🍖', category: 'Main Course' },
-    { id: 'fish-curry', name: 'Fish Curry', price: 290, emoji: '🐟', category: 'Main Course' },
-    { id: 'aloo-gobi', name: 'Aloo Gobi', price: 160, emoji: '🥔', category: 'Main Course' },
-    { id: 'chana-masala', name: 'Chana Masala', price: 170, emoji: '🫘', category: 'Main Course' },
+    // Appetizers (20% discount for subscription)
+    { id: 'paneer-tikka', name: 'Paneer Tikka', price: 180, originalPrice: 220, emoji: '🧆', category: 'Appetizer' },
+    { id: 'chicken-tikka', name: 'Chicken Tikka', price: 190, originalPrice: 240, emoji: '🍗', category: 'Appetizer' },
+    { id: 'seekh-kebab', name: 'Seekh Kebab', price: 210, originalPrice: 260, emoji: '🍢', category: 'Appetizer' },
+    { id: 'samosa', name: 'Samosa (2 pcs)', price: 50, originalPrice: 60, emoji: '🥟', category: 'Appetizer' },
+    { id: 'pakora', name: 'Mixed Pakora', price: 65, originalPrice: 80, emoji: '🧄', category: 'Appetizer' },
     
-    // Appetizers
-    { id: 'paneer-tikka', name: 'Paneer Tikka', price: 220, emoji: '🧆', category: 'Appetizer' },
-    { id: 'chicken-tikka', name: 'Chicken Tikka', price: 240, emoji: '🍗', category: 'Appetizer' },
-    { id: 'seekh-kebab', name: 'Seekh Kebab', price: 260, emoji: '🍢', category: 'Appetizer' },
-    { id: 'samosa', name: 'Samosa (2 pcs)', price: 60, emoji: '🥟', category: 'Appetizer' },
-    { id: 'pakora', name: 'Mixed Pakora', price: 80, emoji: '🧄', category: 'Appetizer' },
+    // Breads (20% discount for subscription)
+    { id: 'butter-naan', name: 'Butter Naan', price: 32, originalPrice: 40, emoji: '🥖', category: 'Bread' },
+    { id: 'garlic-naan', name: 'Garlic Naan', price: 40, originalPrice: 50, emoji: '🧄', category: 'Bread' },
+    { id: 'tandoori-roti', name: 'Tandoori Roti', price: 24, originalPrice: 30, emoji: '🫓', category: 'Bread' },
+    { id: 'kulcha', name: 'Kulcha', price: 36, originalPrice: 45, emoji: '🥖', category: 'Bread' },
+    { id: 'paratha', name: 'Paratha', price: 28, originalPrice: 35, emoji: '🥞', category: 'Bread' },
+    { id: 'cheese-naan', name: 'Cheese Naan', price: 48, originalPrice: 60, emoji: '🧀', category: 'Bread' },
+    { id: 'plain-naan', name: 'Plain Naan', price: 24, originalPrice: 30, emoji: '🥖', category: 'Bread' },
     
-    // Breads
-    { id: 'butter-naan', name: 'Butter Naan', price: 40, emoji: '🥖', category: 'Bread' },
-    { id: 'garlic-naan', name: 'Garlic Naan', price: 50, emoji: '🧄', category: 'Bread' },
-    { id: 'tandoori-roti', name: 'Tandoori Roti', price: 30, emoji: '🫓', category: 'Bread' },
-    { id: 'kulcha', name: 'Kulcha', price: 45, emoji: '🥖', category: 'Bread' },
-    { id: 'paratha', name: 'Paratha', price: 35, emoji: '🥞', category: 'Bread' },
+    // Rice (20% discount for subscription)
+    { id: 'steamed-rice', name: 'Steamed Rice', price: 64, originalPrice: 80, emoji: '🍚', category: 'Rice' },
+    { id: 'jeera-rice', name: 'Jeera Rice', price: 80, originalPrice: 100, emoji: '🍚', category: 'Rice' },
+    { id: 'pulao', name: 'Veg Pulao', price: 112, originalPrice: 140, emoji: '🍚', category: 'Rice' },
+    { id: 'lemon-rice', name: 'Lemon Rice', price: 72, originalPrice: 90, emoji: '🍋', category: 'Rice' },
     
-    // Rice
-    { id: 'steamed-rice', name: 'Steamed Rice', price: 80, emoji: '🍚', category: 'Rice' },
-    { id: 'jeera-rice', name: 'Jeera Rice', price: 100, emoji: '🍚', category: 'Rice' },
-    { id: 'pulao', name: 'Veg Pulao', price: 140, emoji: '🍚', category: 'Rice' },
+    // Desserts (20% discount for subscription)
+    { id: 'gulab-jamun', name: 'Gulab Jamun (2 pcs)', price: 96, originalPrice: 120, emoji: '🍡', category: 'Dessert' },
+    { id: 'kheer', name: 'Rice Kheer', price: 80, originalPrice: 100, emoji: '🍮', category: 'Dessert' },
+    { id: 'rasmalai', name: 'Rasmalai (2 pcs)', price: 112, originalPrice: 140, emoji: '🧈', category: 'Dessert' },
+    { id: 'kulfi', name: 'Kulfi', price: 64, originalPrice: 80, emoji: '🍦', category: 'Dessert' },
+    { id: 'gajar-halwa', name: 'Gajar Halwa', price: 88, originalPrice: 110, emoji: '🥕', category: 'Dessert' },
     
-    // Desserts
-    { id: 'gulab-jamun', name: 'Gulab Jamun', price: 120, emoji: '🍡', category: 'Dessert' },
-    { id: 'kheer', name: 'Rice Kheer', price: 100, emoji: '🍮', category: 'Dessert' },
-    { id: 'rasmalai', name: 'Rasmalai', price: 140, emoji: '🧈', category: 'Dessert' },
-    { id: 'kulfi', name: 'Kulfi', price: 80, emoji: '🍦', category: 'Dessert' },
-    
-    // Beverages
-    { id: 'masala-chai', name: 'Masala Chai', price: 30, emoji: '☕', category: 'Beverage' },
-    { id: 'mango-lassi', name: 'Mango Lassi', price: 60, emoji: '🥭', category: 'Beverage' },
-    { id: 'sweet-lassi', name: 'Sweet Lassi', price: 50, emoji: '🥛', category: 'Beverage' },
-    { id: 'fresh-lime', name: 'Fresh Lime Water', price: 40, emoji: '🍋', category: 'Beverage' },
+    // Beverages (20% discount for subscription)
+    { id: 'masala-chai', name: 'Masala Chai', price: 24, originalPrice: 30, emoji: '☕', category: 'Beverage' },
+    { id: 'mango-lassi', name: 'Mango Lassi', price: 48, originalPrice: 60, emoji: '🥭', category: 'Beverage' },
+    { id: 'sweet-lassi', name: 'Sweet Lassi', price: 40, originalPrice: 50, emoji: '🥛', category: 'Beverage' },
+    { id: 'fresh-lime', name: 'Fresh Lime Water', price: 32, originalPrice: 40, emoji: '🍋', category: 'Beverage' },
+    { id: 'buttermilk', name: 'Buttermilk', price: 28, originalPrice: 35, emoji: '🥛', category: 'Beverage' },
   ]
   
   const calculateTotal = () => {
@@ -99,13 +93,13 @@ export default function SubscribeNewPage() {
         total += parseFloat(billingCycle === "weekly" ? addOn.weeklyPrice : addOn.monthlyPrice) * quantity
       }
     })
-    // Menu items
-    Object.entries(menuItems).forEach(([itemId, { quantity, frequency }]) => {
+    // Menu items (added daily to subscription)
+    Object.entries(menuItems).forEach(([itemId, quantity]) => {
       const item = mockMenuItems.find(i => i.id === itemId)
       if (item && quantity > 0) {
-        const multiplier = frequency === 'daily' ? (billingCycle === 'weekly' ? 7 : 30) : 1
-        const itemTotal = item.price * quantity * multiplier
-        total += billingCycle === 'weekly' ? itemTotal / 4.33 : itemTotal // Convert to weekly/monthly
+        const dailyCost = item.price * quantity
+        const periodCost = dailyCost * (billingCycle === 'weekly' ? 7 : 30)
+        total += periodCost
       }
     })
     return total.toFixed(2)
@@ -123,15 +117,15 @@ export default function SubscribeNewPage() {
     })
   }
   
-  const handleMenuItemChange = (itemId: string, delta: number, frequency: 'daily' | 'specific' = 'daily') => {
+  const handleMenuItemChange = (itemId: string, delta: number) => {
     setMenuItems(prev => {
-      const current = prev[itemId]?.quantity || 0
+      const current = prev[itemId] || 0
       const newValue = Math.max(0, Math.min(10, current + delta))
       if (newValue === 0) {
         const { [itemId]: _, ...rest } = prev
         return rest
       }
-      return { ...prev, [itemId]: { quantity: newValue, frequency } }
+      return { ...prev, [itemId]: newValue }
     })
   }
 
@@ -364,16 +358,16 @@ export default function SubscribeNewPage() {
   )
   
   const renderMenuSelection = () => {
-    const categories = ['Main Course', 'Appetizer', 'Bread', 'Rice', 'Dessert', 'Beverage']
+    const categories = ['Appetizer', 'Bread', 'Rice', 'Dessert', 'Beverage']
     
     return (
       <div className="space-y-8">
         <div className="text-center mb-8">
           <h2 className="text-3xl font-bold tracking-tight mb-4">
-            Add from Our Menu
+            Add Subscription Extras
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Choose additional items from our delicious menu to customize your subscription
+            Add sides, beverages, and extras to your meals - these will be included with every delivery at special subscription pricing (20% off regular menu prices)
           </p>
         </div>
         
@@ -393,9 +387,7 @@ export default function SubscribeNewPage() {
               <CardContent>
                 <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
                   {categoryItems.map((item) => {
-                    const menuItem = menuItems[item.id]
-                    const quantity = menuItem?.quantity || 0
-                    const frequency = menuItem?.frequency || 'daily'
+                    const quantity = menuItems[item.id] || 0
 
                     return (
                       <div
@@ -406,28 +398,18 @@ export default function SubscribeNewPage() {
                           <div className="text-2xl">{item.emoji}</div>
                           <div className="flex-1">
                             <h4 className="font-medium text-sm">{item.name}</h4>
-                            <p className="text-sm font-semibold text-primary">
-                              ₹{item.price}
-                            </p>
+                            <div className="flex items-center gap-2">
+                              <p className="text-sm font-semibold text-primary">
+                                ₹{item.price}
+                              </p>
+                              <p className="text-xs text-muted-foreground line-through">
+                                ₹{item.originalPrice}
+                              </p>
+                            </div>
                             {quantity > 0 && (
-                              <div className="mt-1 flex items-center gap-1">
-                                <Button
-                                  variant={frequency === 'daily' ? 'default' : 'outline'}
-                                  size="sm"
-                                  className="h-5 px-2 text-xs"
-                                  onClick={() => handleMenuItemChange(item.id, 0, 'daily')}
-                                >
-                                  Daily
-                                </Button>
-                                <Button
-                                  variant={frequency === 'specific' ? 'default' : 'outline'}
-                                  size="sm"
-                                  className="h-5 px-2 text-xs"
-                                  onClick={() => handleMenuItemChange(item.id, 0, 'specific')}
-                                >
-                                  Specific
-                                </Button>
-                              </div>
+                              <p className="text-xs text-green-600 mt-1">
+                                Included daily with your meals
+                              </p>
                             )}
                           </div>
                         </div>
@@ -436,7 +418,7 @@ export default function SubscribeNewPage() {
                             variant="outline"
                             size="sm"
                             className="h-8 w-8 p-0"
-                            onClick={() => handleMenuItemChange(item.id, -1, frequency)}
+                            onClick={() => handleMenuItemChange(item.id, -1)}
                             disabled={quantity === 0}
                           >
                             <Minus className="h-3 w-3" />
@@ -446,7 +428,7 @@ export default function SubscribeNewPage() {
                             variant="outline"
                             size="sm"
                             className="h-8 w-8 p-0"
-                            onClick={() => handleMenuItemChange(item.id, 1, frequency)}
+                            onClick={() => handleMenuItemChange(item.id, 1)}
                             disabled={quantity >= 10}
                           >
                             <Plus className="h-3 w-3" />
@@ -531,7 +513,7 @@ export default function SubscribeNewPage() {
               <p className="text-muted-foreground text-sm">No extra menu items selected</p>
             ) : (
               <div className="space-y-3">
-                {Object.entries(menuItems).map(([itemId, { quantity, frequency }]) => {
+                {Object.entries(menuItems).map(([itemId, quantity]) => {
                   const item = mockMenuItems.find(i => i.id === itemId)
                   return item ? (
                     <div key={itemId} className="flex items-center justify-between">
@@ -540,12 +522,12 @@ export default function SubscribeNewPage() {
                         <div>
                           <p className="text-sm font-medium">{item.name} × {quantity}</p>
                           <p className="text-xs text-muted-foreground">
-                            {frequency === 'daily' ? 'Added daily' : 'For specific days'}
+                            Included daily with your meals
                           </p>
                         </div>
                       </div>
                       <p className="text-sm font-semibold">
-                        ₹{item.price * quantity * (frequency === 'daily' ? (billingCycle === 'weekly' ? 7 : 30) : 1)}
+                        ₹{item.price * quantity * (billingCycle === 'weekly' ? 7 : 30)}
                       </p>
                     </div>
                   ) : null
