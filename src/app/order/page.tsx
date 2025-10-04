@@ -11,18 +11,59 @@ import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { cn } from "@/lib/utils"
 
-// Mock menu items for one-time orders
+// Full menu items for takeout orders - organized by category
 const menuItems = [
-  { id: "1", name: "Butter Chicken", description: "Creamy tomato curry with tender chicken", price: 280, image: "🍛", category: "Main Course" },
-  { id: "2", name: "Dal Makhani", description: "Rich black lentils with butter & cream", price: 180, image: "🍲", category: "Main Course" },
-  { id: "3", name: "Chicken Biryani", description: "Fragrant basmati rice with spiced chicken", price: 250, image: "🍚", category: "Main Course" },
-  { id: "4", name: "Palak Paneer", description: "Cottage cheese in creamy spinach gravy", price: 220, image: "🥬", category: "Main Course" },
-  { id: "5", name: "Paneer Tikka", description: "Grilled cottage cheese with spices", price: 220, image: "🧆", category: "Appetizer" },
-  { id: "6", name: "Samosa (2 pcs)", description: "Crispy pastry with spiced potato filling", price: 80, image: "🥟", category: "Appetizer" },
-  { id: "7", name: "Butter Naan", description: "Soft leavened flatbread with butter", price: 40, image: "🥖", category: "Bread" },
-  { id: "8", name: "Garlic Naan", description: "Naan topped with fresh garlic", price: 50, image: "🧄", category: "Bread" },
-  { id: "9", name: "Gulab Jamun (2 pcs)", description: "Sweet milk dumplings in syrup", price: 120, image: "🍡", category: "Dessert" },
-  { id: "10", name: "Mango Lassi", description: "Sweet yogurt drink with mango", price: 80, image: "🥭", category: "Beverage" },
+  // Main Course
+  { id: 'main1', name: 'Butter Chicken', description: 'Creamy tomato curry with tender chicken', price: 320, image: '🍛', category: 'Main Course', spiceLevel: 'Medium' },
+  { id: 'main2', name: 'Dal Makhani', description: 'Rich black lentils with butter & cream', price: 220, image: '🍲', category: 'Main Course', spiceLevel: 'Mild' },
+  { id: 'main3', name: 'Chicken Biryani', description: 'Fragrant basmati rice with spiced chicken', price: 380, image: '🍚', category: 'Main Course', spiceLevel: 'Medium' },
+  { id: 'main4', name: 'Palak Paneer', description: 'Cottage cheese in creamy spinach gravy', price: 280, image: '🥬', category: 'Main Course', spiceLevel: 'Mild' },
+  { id: 'main5', name: 'Chole Bhature', description: 'Spiced chickpeas with fried bread', price: 260, image: '🍲', category: 'Main Course', spiceLevel: 'Medium' },
+  { id: 'main6', name: 'Rajma Masala', description: 'Kidney beans in thick tomato gravy', price: 240, image: '🍲', category: 'Main Course', spiceLevel: 'Medium' },
+  { id: 'main7', name: 'Paneer Makhani', description: 'Cottage cheese in creamy tomato sauce', price: 300, image: '🍛', category: 'Main Course', spiceLevel: 'Mild' },
+  { id: 'main8', name: 'Mutton Curry', description: 'Tender mutton in aromatic spices', price: 420, image: '🍛', category: 'Main Course', spiceLevel: 'Hot' },
+  { id: 'main9', name: 'Fish Curry', description: 'Fresh fish in coconut curry', price: 360, image: '🍛', category: 'Main Course', spiceLevel: 'Medium' },
+  { id: 'main10', name: 'Egg Curry', description: 'Boiled eggs in spiced gravy', price: 200, image: '🍛', category: 'Main Course', spiceLevel: 'Medium' },
+  
+  // Appetizers
+  { id: 'app1', name: 'Paneer Tikka', description: 'Grilled cottage cheese with spices', price: 280, image: '🧆', category: 'Appetizer', spiceLevel: 'Medium' },
+  { id: 'app2', name: 'Chicken Tikka', description: 'Marinated grilled chicken pieces', price: 320, image: '🍗', category: 'Appetizer', spiceLevel: 'Medium' },
+  { id: 'app3', name: 'Seekh Kebab', description: 'Minced meat skewers with spices', price: 340, image: '🍢', category: 'Appetizer', spiceLevel: 'Hot' },
+  { id: 'app4', name: 'Samosa (3 pcs)', description: 'Crispy pastry with spiced potato filling', price: 120, image: '🥟', category: 'Appetizer', spiceLevel: 'Mild' },
+  { id: 'app5', name: 'Mixed Pakora', description: 'Assorted fritters with mint chutney', price: 140, image: '🧄', category: 'Appetizer', spiceLevel: 'Medium' },
+  { id: 'app6', name: 'Aloo Tikki', description: 'Spiced potato patties with chutneys', price: 100, image: '🥔', category: 'Appetizer', spiceLevel: 'Medium' },
+  
+  // Breads
+  { id: 'bread1', name: 'Butter Naan', description: 'Soft leavened flatbread with butter', price: 50, image: '🥖', category: 'Bread', spiceLevel: 'None' },
+  { id: 'bread2', name: 'Garlic Naan', description: 'Naan topped with fresh garlic', price: 60, image: '🧄', category: 'Bread', spiceLevel: 'Mild' },
+  { id: 'bread3', name: 'Cheese Naan', description: 'Naan stuffed with melted cheese', price: 80, image: '🧀', category: 'Bread', spiceLevel: 'None' },
+  { id: 'bread4', name: 'Tandoori Roti', description: 'Whole wheat flatbread from tandoor', price: 40, image: '🫓', category: 'Bread', spiceLevel: 'None' },
+  { id: 'bread5', name: 'Kulcha', description: 'Leavened bread with onions/potato', price: 55, image: '🥖', category: 'Bread', spiceLevel: 'Mild' },
+  { id: 'bread6', name: 'Paratha', description: 'Layered flatbread with ghee', price: 45, image: '🥞', category: 'Bread', spiceLevel: 'None' },
+  { id: 'bread7', name: 'Plain Naan', description: 'Classic soft leavened bread', price: 40, image: '🥖', category: 'Bread', spiceLevel: 'None' },
+  
+  // Rice
+  { id: 'rice1', name: 'Steamed Rice', description: 'Perfectly cooked basmati rice', price: 80, image: '🍚', category: 'Rice', spiceLevel: 'None' },
+  { id: 'rice2', name: 'Jeera Rice', description: 'Cumin flavored basmati rice', price: 120, image: '🍚', category: 'Rice', spiceLevel: 'Mild' },
+  { id: 'rice3', name: 'Veg Pulao', description: 'Mixed vegetable pilaf rice', price: 160, image: '🍚', category: 'Rice', spiceLevel: 'Mild' },
+  { id: 'rice4', name: 'Lemon Rice', description: 'Tangy rice with curry leaves', price: 100, image: '🍋', category: 'Rice', spiceLevel: 'Mild' },
+  { id: 'rice5', name: 'Coconut Rice', description: 'Rice cooked in coconut milk', price: 110, image: '🥥', category: 'Rice', spiceLevel: 'Mild' },
+  
+  // Desserts
+  { id: 'dessert1', name: 'Gulab Jamun (3 pcs)', description: 'Sweet milk dumplings in syrup', price: 150, image: '🍡', category: 'Dessert', spiceLevel: 'None' },
+  { id: 'dessert2', name: 'Rice Kheer', description: 'Creamy rice pudding with nuts', price: 120, image: '🍮', category: 'Dessert', spiceLevel: 'None' },
+  { id: 'dessert3', name: 'Rasmalai (2 pcs)', description: 'Cottage cheese in sweet milk', price: 180, image: '🧈', category: 'Dessert', spiceLevel: 'None' },
+  { id: 'dessert4', name: 'Kulfi', description: 'Traditional Indian ice cream', price: 100, image: '🍦', category: 'Dessert', spiceLevel: 'None' },
+  { id: 'dessert5', name: 'Gajar Halwa', description: 'Carrot pudding with ghee and nuts', price: 140, image: '🥕', category: 'Dessert', spiceLevel: 'None' },
+  { id: 'dessert6', name: 'Jalebi (4 pcs)', description: 'Crispy spirals in sugar syrup', price: 130, image: '🍩', category: 'Dessert', spiceLevel: 'None' },
+  
+  // Beverages
+  { id: 'bev1', name: 'Mango Lassi', description: 'Sweet yogurt drink with mango', price: 80, image: '🥭', category: 'Beverage', spiceLevel: 'None' },
+  { id: 'bev2', name: 'Sweet Lassi', description: 'Traditional sweet yogurt drink', price: 70, image: '🥛', category: 'Beverage', spiceLevel: 'None' },
+  { id: 'bev3', name: 'Masala Chai', description: 'Spiced Indian tea with milk', price: 40, image: '☕', category: 'Beverage', spiceLevel: 'Mild' },
+  { id: 'bev4', name: 'Fresh Lime Water', description: 'Refreshing lime water with mint', price: 50, image: '🍋', category: 'Beverage', spiceLevel: 'None' },
+  { id: 'bev5', name: 'Buttermilk', description: 'Spiced churned yogurt drink', price: 60, image: '🥛', category: 'Beverage', spiceLevel: 'Mild' },
+  { id: 'bev6', name: 'Rose Sharbat', description: 'Sweet rose flavored drink', price: 70, image: '🌹', category: 'Beverage', spiceLevel: 'None' },
 ]
 
 const categories = ["All", ...Array.from(new Set(menuItems.map(item => item.category)))]
@@ -101,16 +142,16 @@ export default function OrderPage() {
         <div className="text-center mb-12">
           <Badge className="mb-4 bg-orange-100 text-orange-800 hover:bg-orange-100">
             <Clock className="mr-1 h-3 w-3" />
-            Same-Day Service Available
+            Fresh Takeout Available Today
           </Badge>
           <h1 className="text-4xl sm:text-5xl font-bold tracking-tight mb-4">
-            Order Fresh
+            Order Takeout
             <span className="block text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-green-600">
-              Home-Cooked Meals
+              Fresh Made Daily
             </span>
           </h1>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            No subscription needed! Order à la carte for pickup or delivery today.
+            No subscription needed! Order individual items for pickup or delivery today.
           </p>
         </div>
 
@@ -167,80 +208,103 @@ export default function OrderPage() {
           </CardContent>
         </Card>
 
-        {/* Category Filter */}
-        <div className="flex flex-wrap justify-center gap-2 mb-8">
-          {categories.map((category) => (
-            <Button
-              key={category}
-              variant={selectedCategory === category ? "default" : "outline"}
-              onClick={() => setSelectedCategory(category)}
-              className="rounded-full"
-              size="sm"
-            >
-              {category}
-            </Button>
-          ))}
-        </div>
-
-        {/* Menu Grid */}
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mb-12">
-          {filteredItems.map((item) => {
-            const quantity = cart[item.id] || 0
-
+        {/* Menu Sections by Category */}
+        <div className="space-y-12 mb-12">
+          {['Main Course', 'Appetizer', 'Bread', 'Rice', 'Dessert', 'Beverage'].map(category => {
+            const categoryItems = menuItems.filter(item => item.category === category)
             return (
-              <Card key={item.id} className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2">
-                <CardContent className="p-6">
-                  <div className="text-6xl mb-4 text-center transform group-hover:scale-110 transition-transform">
-                    {item.image}
-                  </div>
-                  
-                  <div className="space-y-2">
-                    <div className="flex items-start justify-between">
-                      <h3 className="text-lg font-bold group-hover:text-primary transition-colors">
-                        {item.name}
-                      </h3>
-                      <Badge variant="secondary" className="text-xs">{item.category}</Badge>
-                    </div>
-                    <p className="text-sm text-muted-foreground line-clamp-2">
-                      {item.description}
-                    </p>
-                    
-                    <div className="flex items-center justify-between pt-2">
-                      <span className="text-2xl font-bold text-primary">₹{item.price}</span>
-                      
-                      {quantity === 0 ? (
-                        <Button 
-                          size="sm" 
-                          onClick={() => addToCart(item.id)}
-                          className="bg-gradient-to-r from-orange-600 to-orange-700"
-                        >
-                          <Plus className="h-4 w-4 mr-1" />
-                          Add
-                        </Button>
-                      ) : (
-                        <div className="flex items-center gap-2">
-                          <Button 
-                            size="icon" 
-                            variant="outline"
-                            className="h-8 w-8"
-                            onClick={() => removeFromCart(item.id)}
+              <div key={category}>
+                <Card className="hover:shadow-lg transition-shadow duration-300 border-2">
+                  <CardHeader className="pb-4">
+                    <CardTitle className="flex items-center gap-3 text-2xl">
+                      <div className="p-2 bg-orange-100 dark:bg-orange-900 rounded-full">
+                        {category === 'Main Course' && '🍛'}
+                        {category === 'Appetizer' && '🧆'}
+                        {category === 'Bread' && '🥖'}
+                        {category === 'Rice' && '🍚'}
+                        {category === 'Dessert' && '🍡'}
+                        {category === 'Beverage' && '🥭'}
+                      </div>
+                      {category}
+                      <Badge variant="secondary" className="ml-auto">
+                        {categoryItems.length} items
+                      </Badge>
+                    </CardTitle>
+                    <CardDescription className="text-base">
+                      {category === 'Main Course' && 'Complete meals with authentic flavors'}
+                      {category === 'Appetizer' && 'Perfect starters to begin your meal'}
+                      {category === 'Bread' && 'Fresh baked breads from our tandoor'}
+                      {category === 'Rice' && 'Aromatic rice dishes and varieties'}
+                      {category === 'Dessert' && 'Sweet endings to your perfect meal'}
+                      {category === 'Beverage' && 'Refreshing drinks and traditional beverages'}
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                      {categoryItems.map((item) => {
+                        const quantity = cart[item.id] || 0
+
+                        return (
+                          <div
+                            key={item.id}
+                            className="flex items-center justify-between p-4 rounded-lg border hover:border-orange-500 transition-all duration-200 hover:shadow-sm group"
                           >
-                            <Minus className="h-4 w-4" />
-                          </Button>
-                          <span className="font-semibold w-8 text-center">{quantity}</span>
-                          <Button 
-                            size="icon"
-                            className="h-8 w-8 bg-gradient-to-r from-orange-600 to-orange-700"
-                            onClick={() => addToCart(item.id)}
-                          >
-                            <Plus className="h-4 w-4" />
-                          </Button>
-                        </div>
-                      )}
+                            <div className="flex items-center gap-3 flex-1">
+                              <div className="text-3xl group-hover:scale-110 transition-transform duration-200">{item.image}</div>
+                              <div className="flex-1">
+                                <div className="flex items-center gap-2 mb-1">
+                                  <h4 className="font-semibold text-base group-hover:text-orange-600 transition-colors duration-200">{item.name}</h4>
+                                  {(item as any).spiceLevel && (item as any).spiceLevel !== 'None' && (
+                                    <Badge variant="outline" className="text-xs">
+                                      {(item as any).spiceLevel === 'Mild' && '🌶️'}
+                                      {(item as any).spiceLevel === 'Medium' && '🌶️🌶️'}
+                                      {(item as any).spiceLevel === 'Hot' && '🌶️🌶️🌶️'}
+                                      {(item as any).spiceLevel}
+                                    </Badge>
+                                  )}
+                                </div>
+                                <p className="text-sm text-muted-foreground mb-2">{item.description}</p>
+                                <p className="text-lg font-bold text-orange-600">₹{item.price}</p>
+                              </div>
+                            </div>
+                            <div className="flex items-center gap-2">
+                              {quantity === 0 ? (
+                                <Button 
+                                  size="sm" 
+                                  onClick={() => addToCart(item.id)}
+                                  className="bg-gradient-to-r from-orange-600 to-orange-700 hover:from-orange-700 hover:to-orange-800 transition-all duration-200"
+                                >
+                                  <Plus className="h-4 w-4 mr-1" />
+                                  Add
+                                </Button>
+                              ) : (
+                                <div className="flex items-center gap-2">
+                                  <Button 
+                                    size="sm" 
+                                    variant="outline"
+                                    className="h-8 w-8 p-0"
+                                    onClick={() => removeFromCart(item.id)}
+                                  >
+                                    <Minus className="h-3 w-3" />
+                                  </Button>
+                                  <span className="font-semibold w-6 text-center">{quantity}</span>
+                                  <Button 
+                                    size="sm"
+                                    className="h-8 w-8 p-0 bg-gradient-to-r from-orange-600 to-orange-700"
+                                    onClick={() => addToCart(item.id)}
+                                  >
+                                    <Plus className="h-3 w-3" />
+                                  </Button>
+                                </div>
+                              )}
+                            </div>
+                          </div>
+                        )
+                      })}
                     </div>
-                  </div>
-                </CardContent>
-              </Card>
+                  </CardContent>
+                </Card>
+              </div>
             )
           })}
         </div>

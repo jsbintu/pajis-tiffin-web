@@ -18,13 +18,14 @@ import {
   Utensils
 } from "lucide-react"
 
-const menuItems = [
-  { name: "Butter Chicken", description: "Creamy tomato curry with tender chicken", price: "₹280", category: "Main Course", image: "🍛" },
-  { name: "Dal Makhani", description: "Rich black lentils with butter & cream", price: "₹180", category: "Main Course", image: "🍲" },
-  { name: "Paneer Tikka", description: "Grilled cottage cheese with spices", price: "₹220", category: "Appetizer", image: "🧆" },
-  { name: "Biryani", description: "Fragrant rice with vegetables or chicken", price: "₹250", category: "Main Course", image: "🍚" },
-  { name: "Naan & Roti", description: "Fresh baked Indian breads", price: "₹40", category: "Bread", image: "🥖" },
-  { name: "Gulab Jamun", description: "Sweet milk dumplings in syrup", price: "₹120", category: "Dessert", image: "🍡" },
+// Featured dishes that come with subscription plans
+const featuredSubscriptionItems = [
+  { name: "Dal Tadka", description: "Yellow lentils tempered with aromatic spices", price: "Included", category: "Main Course", image: "🍲" },
+  { name: "Aloo Gobi", description: "Spiced cauliflower and potato curry", price: "Included", category: "Main Course", image: "🥕" },
+  { name: "Rajma Rice", description: "Kidney beans curry with steamed rice", price: "Included", category: "Main Course", image: "🍚" },
+  { name: "Chole", description: "Spiced chickpeas in thick gravy", price: "Included", category: "Main Course", image: "🍲" },
+  { name: "Mixed Vegetables", description: "Seasonal vegetables in curry base", price: "Included", category: "Main Course", image: "🥕" },
+  { name: "Rotis & Rice", description: "Fresh chapatis and basmati rice", price: "Included", category: "Staples", image: "🍚" },
 ]
 
 const testimonials = [
@@ -344,15 +345,15 @@ export default function HomePage() {
           <div className="text-center mb-12">
             <Badge className="mb-4 hover:scale-105 transition-transform duration-200 cursor-pointer">Our Menu</Badge>
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4 hover:text-primary transition-colors duration-300 cursor-pointer">
-              Today's Featured Dishes
+              What's Included in Your Subscription
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto hover:text-foreground/80 transition-colors duration-300">
-              Authentic recipes passed down through generations. All dishes made fresh daily with premium ingredients.
+              These home-style dishes are included in our subscription plans. Fresh, nutritious, and delivered daily to your door.
             </p>
           </div>
 
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {menuItems.map((item, index) => (
+            {featuredSubscriptionItems.map((item, index) => (
               <Card key={index} className="group hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border-2 hover:border-primary/50 cursor-pointer overflow-hidden relative">
                 <div className="absolute inset-0 bg-gradient-to-br from-green-400/5 to-orange-400/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <CardContent className="p-6 relative z-10">
@@ -363,15 +364,15 @@ export default function HomePage() {
                   <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors duration-200">{item.name}</h3>
                   <p className="text-sm text-muted-foreground mb-4 group-hover:text-foreground/70 transition-colors duration-200">{item.description}</p>
                   <div className="flex items-center justify-between mb-4">
-                    <span className="text-2xl font-bold text-primary group-hover:scale-110 transition-transform duration-200">{item.price}</span>
+                    <span className="text-lg font-bold text-green-600 group-hover:scale-110 transition-transform duration-200">{item.price}</span>
                     <div className="flex items-center gap-1 text-yellow-500">
                       {[...Array(5)].map((_, i) => (
                         <Star key={i} className="h-4 w-4 fill-current group-hover:animate-pulse" style={{ animationDelay: `${i * 100}ms` }} />
                       ))}
                     </div>
                   </div>
-                  <Button size="sm" className="w-full group-hover:shadow-lg transition-all duration-300 hover:scale-105 bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700">
-                    Add to Takeout
+                  <Button size="sm" className="w-full group-hover:shadow-lg transition-all duration-300 hover:scale-105 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700">
+                    Included in Subscription
                   </Button>
                 </CardContent>
               </Card>
@@ -444,41 +445,110 @@ export default function HomePage() {
       {/* How It Works */}
       <section className="py-20">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <Badge className="mb-4 hover:scale-105 transition-transform duration-200 cursor-pointer">Simple Process</Badge>
+          <div className="text-center mb-16">
+            <Badge className="mb-4 hover:scale-105 transition-transform duration-200 cursor-pointer">Two Simple Ways</Badge>
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4 hover:text-primary transition-colors duration-300 cursor-pointer">
               How It Works
             </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Choose between our convenient subscription service or individual takeout orders
+            </p>
           </div>
 
-          <div className="grid gap-8 md:grid-cols-3">
-            <div className="text-center group cursor-pointer hover:-translate-y-2 transition-all duration-300">
-              <div className="w-16 h-16 rounded-full bg-gradient-to-br from-green-500 to-green-600 text-white text-2xl font-bold flex items-center justify-center mx-auto mb-4 group-hover:scale-110 group-hover:animate-pulse transition-all duration-300">
-                1
-              </div>
-              <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors duration-200">Choose Your Plan</h3>
-              <p className="text-muted-foreground group-hover:text-foreground/80 transition-colors duration-200">
-                Select from our flexible weekly or monthly subscription plans
-              </p>
-            </div>
-            <div className="text-center group cursor-pointer hover:-translate-y-2 transition-all duration-300">
-              <div className="w-16 h-16 rounded-full bg-gradient-to-br from-green-500 to-green-600 text-white text-2xl font-bold flex items-center justify-center mx-auto mb-4 group-hover:scale-110 group-hover:animate-pulse transition-all duration-300">
-                2
-              </div>
-              <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors duration-200">Customize Your Menu</h3>
-              <p className="text-muted-foreground group-hover:text-foreground/80 transition-colors duration-200">
-                Pick your favorite dishes from our extensive rotating menu
-              </p>
-            </div>
-            <div className="text-center group cursor-pointer hover:-translate-y-2 transition-all duration-300">
-              <div className="w-16 h-16 rounded-full bg-gradient-to-br from-green-500 to-green-600 text-white text-2xl font-bold flex items-center justify-center mx-auto mb-4 group-hover:scale-110 group-hover:animate-pulse transition-all duration-300">
-                3
-              </div>
-              <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors duration-200">Enjoy Fresh Meals</h3>
-              <p className="text-muted-foreground group-hover:text-foreground/80 transition-colors duration-200">
-                Receive hot, fresh meals delivered right to your doorstep
-              </p>
-            </div>
+          <div className="grid gap-12 lg:grid-cols-2">
+            {/* Subscription Flow */}
+            <Card className="border-2 border-green-200 bg-green-50/50 dark:bg-green-950/20 hover:shadow-xl transition-all duration-300">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-green-700 dark:text-green-300">
+                  <Users className="h-6 w-6" />
+                  Daily Subscription Process
+                </CardTitle>
+                <CardDescription>
+                  Set up once, enjoy daily fresh meals without the hassle
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                <div className="grid gap-6">
+                  <div className="flex items-start gap-4">
+                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-green-500 to-green-600 text-white text-lg font-bold flex items-center justify-center flex-shrink-0 animate-pulse">
+                      1
+                    </div>
+                    <div>
+                      <h4 className="font-semibold mb-1">Choose Your Plan</h4>
+                      <p className="text-sm text-muted-foreground">Select weekly or monthly subscription that fits your needs</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-4">
+                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-green-500 to-green-600 text-white text-lg font-bold flex items-center justify-center flex-shrink-0 animate-pulse">
+                      2
+                    </div>
+                    <div>
+                      <h4 className="font-semibold mb-1">Add Extras (Optional)</h4>
+                      <p className="text-sm text-muted-foreground">Customize with sides, beverages, and desserts at 20% off</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-4">
+                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-green-500 to-green-600 text-white text-lg font-bold flex items-center justify-center flex-shrink-0 animate-pulse">
+                      3
+                    </div>
+                    <div>
+                      <h4 className="font-semibold mb-1">Relax & Enjoy</h4>
+                      <p className="text-sm text-muted-foreground">Fresh meals delivered daily to your doorstep automatically</p>
+                    </div>
+                  </div>
+                </div>
+                <Button asChild className="w-full bg-gradient-to-r from-green-600 to-green-700">
+                  <Link href="/subscribe-new">Start Subscription →</Link>
+                </Button>
+              </CardContent>
+            </Card>
+
+            {/* Takeout Flow */}
+            <Card className="border-2 border-orange-200 bg-orange-50/50 dark:bg-orange-950/20 hover:shadow-xl transition-all duration-300">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-orange-700 dark:text-orange-300">
+                  <Clock className="h-6 w-6" />
+                  Takeout Order Process
+                </CardTitle>
+                <CardDescription>
+                  Order when you want, pickup or delivery in 45 minutes
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                <div className="grid gap-6">
+                  <div className="flex items-start gap-4">
+                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-orange-500 to-orange-600 text-white text-lg font-bold flex items-center justify-center flex-shrink-0 animate-pulse">
+                      1
+                    </div>
+                    <div>
+                      <h4 className="font-semibold mb-1">Browse Full Menu</h4>
+                      <p className="text-sm text-muted-foreground">Choose from 50+ dishes across all categories</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-4">
+                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-orange-500 to-orange-600 text-white text-lg font-bold flex items-center justify-center flex-shrink-0 animate-pulse">
+                      2
+                    </div>
+                    <div>
+                      <h4 className="font-semibold mb-1">Add to Cart</h4>
+                      <p className="text-sm text-muted-foreground">Select quantity, pickup or delivery, and checkout</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-4">
+                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-orange-500 to-orange-600 text-white text-lg font-bold flex items-center justify-center flex-shrink-0 animate-pulse">
+                      3
+                    </div>
+                    <div>
+                      <h4 className="font-semibold mb-1">Get Your Order</h4>
+                      <p className="text-sm text-muted-foreground">Ready in 45 minutes for pickup or delivered to you</p>
+                    </div>
+                  </div>
+                </div>
+                <Button asChild variant="outline" className="w-full border-orange-600 text-orange-600 hover:bg-orange-50">
+                  <Link href="/order">Order Takeout →</Link>
+                </Button>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
