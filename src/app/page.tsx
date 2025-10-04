@@ -95,15 +95,7 @@ export default function HomePage() {
                   <Link href="/subscribe-new">Get Started - ₹2,999/month</Link>
                 </Button>
                 <Button asChild size="lg" variant="outline" className="flex-1 sm:flex-initial w-full sm:w-auto text-lg">
-                  <Link href="/menu">View Menu</Link>
-                </Button>
-                <Button asChild size="lg" variant="outline" className="flex-1 sm:flex-initial w-full sm:w-auto text-lg border-orange-600 text-orange-600 hover:bg-orange-50">
-                  <Link href="/order">
-                    <div className="flex flex-col items-center">
-                      <span>Same-Day Order</span>
-                      <span className="text-xs font-normal">Pickup & Delivery</span>
-                    </div>
-                  </Link>
+                  <Link href="/menu">View Full Menu</Link>
                 </Button>
               </div>
 
@@ -153,6 +145,164 @@ export default function HomePage() {
                 </CardContent>
               </Card>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Service Options Section */}
+      <section className="py-20 bg-gradient-to-br from-slate-50 via-white to-green-50 dark:from-slate-900 dark:via-background dark:to-green-950">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <Badge className="mb-4 bg-gradient-to-r from-green-100 to-orange-100 text-green-800 border-green-200">
+              Choose Your Style
+            </Badge>
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4">
+              How Would You Like to Order?
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              We offer two convenient ways to enjoy our delicious meals. Pick the one that fits your lifestyle!
+            </p>
+          </div>
+
+          <div className="grid gap-8 md:grid-cols-2 max-w-6xl mx-auto">
+            {/* Subscription Option */}
+            <Card className="group relative overflow-hidden border-2 hover:border-green-500 transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 cursor-pointer bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-950 dark:to-emerald-950">
+              <div className="absolute inset-0 bg-gradient-to-br from-green-400/10 to-emerald-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <CardHeader className="relative z-10 pb-4">
+                <div className="flex items-center justify-between mb-4">
+                  <div className="p-3 bg-green-100 dark:bg-green-900 rounded-full group-hover:scale-110 transition-transform duration-300">
+                    <Users className="h-6 w-6 text-green-600 dark:text-green-400" />
+                  </div>
+                  <Badge className="bg-green-100 text-green-800 hover:bg-green-100 group-hover:animate-pulse">
+                    Most Popular
+                  </Badge>
+                </div>
+                <CardTitle className="text-2xl font-bold text-green-800 dark:text-green-200 group-hover:text-green-900 dark:group-hover:text-green-100 transition-colors">
+                  Daily Subscription
+                </CardTitle>
+                <CardDescription className="text-base">
+                  Fresh meals delivered to your door every day. Set it and forget it!
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="relative z-10 space-y-4">
+                <div className="space-y-3">
+                  <div className="flex items-center gap-3">
+                    <CheckCircle2 className="h-5 w-5 text-green-600 group-hover:scale-110 transition-transform duration-200" />
+                    <span className="text-sm font-medium">Daily fresh meals (Mon-Sun)</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <CheckCircle2 className="h-5 w-5 text-green-600 group-hover:scale-110 transition-transform duration-200 delay-75" />
+                    <span className="text-sm font-medium">20% discount on extras</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <CheckCircle2 className="h-5 w-5 text-green-600 group-hover:scale-110 transition-transform duration-200 delay-150" />
+                    <span className="text-sm font-medium">No cooking or planning needed</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <CheckCircle2 className="h-5 w-5 text-green-600 group-hover:scale-110 transition-transform duration-200 delay-200" />
+                    <span className="text-sm font-medium">Cancel anytime, no commitment</span>
+                  </div>
+                </div>
+                
+                <div className="pt-4 border-t border-green-200/50">
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="text-sm text-muted-foreground">Starting from</span>
+                    <div className="text-right">
+                      <div className="text-2xl font-bold text-green-600 group-hover:scale-105 transition-transform duration-200">
+                        ₹2,999
+                      </div>
+                      <div className="text-xs text-muted-foreground">per month</div>
+                    </div>
+                  </div>
+                  
+                  <Button asChild className="w-full bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 group-hover:shadow-lg transition-all duration-300">
+                    <Link href="/subscribe-new" className="flex items-center justify-center gap-2">
+                      <span>Start Subscription</span>
+                      <TrendingUp className="h-4 w-4 group-hover:translate-x-1 transition-transform duration-200" />
+                    </Link>
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Same-Day Order Option */}
+            <Card className="group relative overflow-hidden border-2 hover:border-orange-500 transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 cursor-pointer bg-gradient-to-br from-orange-50 to-amber-50 dark:from-orange-950 dark:to-amber-950">
+              <div className="absolute inset-0 bg-gradient-to-br from-orange-400/10 to-amber-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <CardHeader className="relative z-10 pb-4">
+                <div className="flex items-center justify-between mb-4">
+                  <div className="p-3 bg-orange-100 dark:bg-orange-900 rounded-full group-hover:scale-110 transition-transform duration-300">
+                    <Clock className="h-6 w-6 text-orange-600 dark:text-orange-400" />
+                  </div>
+                  <Badge className="bg-orange-100 text-orange-800 hover:bg-orange-100 group-hover:animate-pulse">
+                    Quick & Easy
+                  </Badge>
+                </div>
+                <CardTitle className="text-2xl font-bold text-orange-800 dark:text-orange-200 group-hover:text-orange-900 dark:group-hover:text-orange-100 transition-colors">
+                  Same-Day Order
+                </CardTitle>
+                <CardDescription className="text-base">
+                  Order now for pickup or delivery today. Perfect for special occasions!
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="relative z-10 space-y-4">
+                <div className="space-y-3">
+                  <div className="flex items-center gap-3">
+                    <CheckCircle2 className="h-5 w-5 text-orange-600 group-hover:scale-110 transition-transform duration-200" />
+                    <span className="text-sm font-medium">Order when you want</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <CheckCircle2 className="h-5 w-5 text-orange-600 group-hover:scale-110 transition-transform duration-200 delay-75" />
+                    <span className="text-sm font-medium">Pickup or delivery options</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <CheckCircle2 className="h-5 w-5 text-orange-600 group-hover:scale-110 transition-transform duration-200 delay-150" />
+                    <span className="text-sm font-medium">Full menu available</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <CheckCircle2 className="h-5 w-5 text-orange-600 group-hover:scale-110 transition-transform duration-200 delay-200" />
+                    <span className="text-sm font-medium">Same-day freshness</span>
+                  </div>
+                </div>
+                
+                <div className="pt-4 border-t border-orange-200/50">
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="text-sm text-muted-foreground">Individual meals</span>
+                    <div className="text-right">
+                      <div className="text-2xl font-bold text-orange-600 group-hover:scale-105 transition-transform duration-200">
+                        ₹180+
+                      </div>
+                      <div className="text-xs text-muted-foreground">per dish</div>
+                    </div>
+                  </div>
+                  
+                  <Button asChild variant="outline" className="w-full border-orange-600 text-orange-600 hover:bg-orange-50 hover:border-orange-700 group-hover:shadow-lg transition-all duration-300">
+                    <Link href="/order" className="flex items-center justify-center gap-2">
+                      <span>Order Now</span>
+                      <Truck className="h-4 w-4 group-hover:translate-x-1 transition-transform duration-200" />
+                    </Link>
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+          
+          {/* Comparison Helper */}
+          <div className="mt-12 text-center">
+            <Card className="max-w-3xl mx-auto bg-gradient-to-r from-slate-50 to-gray-50 dark:from-slate-900 dark:to-gray-900 border-dashed border-2 border-gray-300 dark:border-gray-600">
+              <CardContent className="p-6">
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-sm text-muted-foreground">
+                  <div className="flex items-center gap-2">
+                    <Users className="h-4 w-4 text-green-600" />
+                    <span><strong>Subscription:</strong> Best for busy professionals & families</span>
+                  </div>
+                  <div className="hidden sm:block w-px h-6 bg-gray-300" />
+                  <div className="flex items-center gap-2">
+                    <Clock className="h-4 w-4 text-orange-600" />
+                    <span><strong>Same-Day:</strong> Perfect for events & special meals</span>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
